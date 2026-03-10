@@ -1,0 +1,3071 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AdvisaStacks | Practical AI Toolkits for Tradie Consultants</title>
+  <meta name="description" content="We're looking for consultants to take part in beta testing for AdvisaStacks, a new AI App for tradie and small business support." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AdvisaStacks | Practical AI Toolkits for Tradie Consultants" />
+  <meta property="og:description" content="We're looking for consultants to take part in beta testing for AdvisaStacks, a new AI App for tradie and small business support." />
+  <meta property="og:image" content="https://advisastacks.com/AdvisaStacks%20Socials%20Feature.png" />
+  <meta property="og:url" content="https://advisastacks.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AdvisaStacks | Practical AI Toolkits for Tradie Consultants" />
+  <meta name="twitter:description" content="We're looking for consultants to take part in beta testing for AdvisaStacks, a new AI App for tradie and small business support." />
+  <meta name="twitter:image" content="https://advisastacks.com/AdvisaStacks%20Socials%20Feature.png" />
+  <link rel="icon" type="image/png" href="./advisastacks-logo-favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    :root {
+      --bg: #313131;
+      --text: #f9faff;
+      --accent: #e75a00;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Roboto", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    body.auth-pending {
+      visibility: hidden;
+    }
+
+    .site-header {
+      position: relative;
+      z-index: 10000;
+      background: #313131;
+      line-height: 0;
+      padding-top: env(safe-area-inset-top);
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .header-hero-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 0 0 18px 18px;
+    }
+
+    .menu-btn {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      z-index: 10030;
+      border: 2px solid #e75a00;
+      background: #e75a00;
+      padding: 14px;
+      cursor: pointer;
+      min-width: 64px;
+      min-height: 64px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .menu-btn:focus {
+      outline: 3px solid rgba(249, 250, 255, 0.35);
+      outline-offset: 2px;
+    }
+
+    .menu-icon {
+      width: 34px;
+      height: 24px;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .menu-icon span {
+      display: block;
+      width: 100%;
+      height: 4px;
+      border-radius: 2px;
+      background: #f9faff;
+    }
+
+    .menu-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(320px, 92vw);
+      height: 100vh;
+      background: #ffffff;
+      transform: translateX(110%);
+      transition: transform 180ms ease;
+      z-index: 10020;
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: -18px 0 40px rgba(0, 0, 0, 0.18);
+      overflow-y: auto;
+    }
+
+    .menu-panel.open {
+      transform: translateX(0);
+    }
+
+    .menu-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 220ms ease;
+      z-index: 10010;
+    }
+
+    .menu-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .nav-categories {
+      font-size: 34px;
+      font-weight: 700;
+      color: #313131;
+      text-align: center;
+      margin: 6px 0 18px 0;
+    }
+
+    .menu-item {
+      background: #f9faff;
+      border: 2px solid #f9faff;
+      border-radius: 10px;
+      color: #313131;
+      font-size: 22px;
+      font-weight: 600;
+      padding: 12px 10px;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-family: "Roboto", sans-serif;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .menu-item.active {
+      background: #e75a00;
+      border-color: #e75a00;
+      color: #f9faff;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px 18px 32px;
+    }
+
+    .page-title {
+      margin: 8px 0 6px;
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .page-help {
+      margin: 0 0 20px;
+      max-width: 860px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Global Inputs */
+    .global-inputs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding: 16px;
+      background: #f9faff;
+      border: 4px solid #313131;
+      border-radius: 12px;
+      box-shadow: 0 10px 24px rgba(12, 18, 44, 0.22);
+    }
+
+    .global-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .global-field label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e75a00;
+    }
+
+    .global-field input {
+      padding: 10px;
+      border: 2px solid #313131;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      color: #e75a00;
+      background: transparent;
+    }
+
+    .global-field input:focus {
+      outline: 3px solid rgba(231, 90, 0, 0.35);
+      outline-offset: 2px;
+    }
+
+    .global-field input::placeholder {
+      color: rgba(231, 90, 0, 0.85);
+    }
+
+    .global-actions {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .reset-defaults-btn {
+      padding: 10px 14px;
+      border: 2px solid #313131;
+      border-radius: 10px;
+      background: #313131;
+      color: #f9faff;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      min-height: 44px;
+    }
+
+    .reset-defaults-btn:focus {
+      outline: 3px solid rgba(49, 49, 49, 0.35);
+      outline-offset: 2px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .card {
+      grid-column: span 12;
+      border: 4px solid #e75a00;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #e75a00;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 24px rgba(12, 18, 44, 0.22);
+      transition: box-shadow 0.2s ease;
+    }
+
+    @media (min-width: 860px) {
+      .card {
+        grid-column: span 6;
+      }
+    }
+
+    .card.open {
+      background: #e75a00;
+      box-shadow: 0 14px 30px rgba(12, 18, 44, 0.28);
+    }
+
+    .card-head {
+      padding: 16px;
+      cursor: pointer;
+      background: #f9faff;
+      color: #313131;
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      flex: 0 0 auto;
+    }
+
+    .card-head h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #313131;
+    }
+
+    .kv {
+      display: grid;
+      gap: 8px;
+      font-size: 14px;
+      line-height: 1.35;
+      color: #313131;
+    }
+
+    .kv .row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .kv .label {
+      min-width: 118px;
+      font-weight: 400;
+      color: #e75a00;
+    }
+
+    .favourite-btn {
+      margin-top: 12px;
+      margin-bottom: 8px;
+      background: #313131;
+      color: #f9faff;
+      border: 0;
+      border-radius: 8px;
+      font-weight: 700;
+      padding: 8px 12px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .reveal-btn {
+      margin-top: 14px;
+      width: fit-content;
+      max-width: 100%;
+      background: #e75a00;
+      color: #f9faff;
+      border: 2px solid #e75a00;
+      padding: 10px 12px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .reveal-btn:hover {
+      filter: brightness(0.95);
+    }
+
+    .reveal-btn:focus {
+      outline: 3px solid rgba(231, 90, 0, 0.35);
+      outline-offset: 2px;
+    }
+
+    .card-body {
+      display: none;
+      background: #313131;
+      color: #f9faff;
+      padding: 14px 16px 16px;
+      flex: 0 0 auto;
+      border: none;
+      outline: none;
+    }
+
+    .card.open .card-body {
+      display: block;
+    }
+
+    .ui-block {
+      margin: 0 0 16px 0;
+    }
+
+    .ui-row {
+      margin: 10px 0;
+    }
+
+    .ui-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      opacity: 0.9;
+      color: #f9faff;
+    }
+
+    .chips,
+    .fields {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .chip-label {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .chip-label input[type="radio"] {
+      display: none;
+    }
+
+    .chip-label span {
+      display: inline-flex;
+      padding: 8px 10px;
+      border: 2px solid #f9faff;
+      background: #ffffff;
+      color: #1d2958;
+      font-size: 13px;
+      line-height: 1.1;
+      transition: all 0.2s ease;
+    }
+
+    .chip-label input[type="radio"]:checked+span {
+      background: #e75a00;
+      color: #313131;
+    }
+
+    .type-input,
+    .custom-input {
+      padding: 8px 10px;
+      border: 2px solid #f9faff;
+      background: #ffffff;
+      color: #1d2958;
+      font-size: 13px;
+      line-height: 1.3;
+      font-family: inherit;
+      outline: none;
+      min-width: 140px;
+      resize: vertical;
+      display: inline-flex;
+    }
+
+    .custom-input {
+      display: none;
+    }
+
+    .custom-input.active {
+      display: inline-block;
+    }
+
+    .type-input:focus,
+    .custom-input:focus {
+      outline: 3px solid rgba(249, 250, 255, 0.35);
+      outline-offset: 2px;
+    }
+
+    /* Custom Quote Builder Styles */
+    .qb-wrapper { background: #ffffff; border-radius: 12px; padding: 24px; color: #1e293b; font-family: inherit; }
+    .qb-wrapper * { box-sizing: border-box; }
+    .qb-header { font-size: 22px; font-weight: 700; color: #0f172a; margin: 0 0 24px 0; }
+    .qb-section { margin-bottom: 24px; border-top: 1px solid #e2e8f0; padding-top: 20px; }
+    .qb-section:first-of-type { border-top: none; padding-top: 0; }
+    .qb-title { font-size: 13px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 16px; letter-spacing: 0.5px; }
+    .qb-grid-2 { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 16px; }
+    @media(min-width: 640px) { .qb-grid-2 { grid-template-columns: 1fr 1fr; } }
+    .qb-grid-3 { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 16px; }
+    @media(min-width: 640px) { .qb-grid-3 { grid-template-columns: 1fr 1fr 1fr; } }
+    .qb-field { display: flex; flex-direction: column; gap: 8px; }
+    .qb-field label { font-size: 13px; font-weight: 700; color: #334155; }
+    .qb-input { padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; color: #0f172a; background: #fff; width: 100%; transition: border-color 0.2s; font-family: inherit; }
+    .qb-input:focus { outline: none; border-color: #e75a00; box-shadow: 0 0 0 3px rgba(231,90,0,0.1); }
+    textarea.qb-input { resize: vertical; min-height: 80px; }
+    
+    /* Line Items Logic */
+    .qb-line-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 16px; position: relative; }
+    .qb-remove-line { position: absolute; top: 12px; right: 12px; color: #ef4444; background: none; border: none; cursor: pointer; font-size: 13px; font-weight: 700; padding: 4px; }
+    .qb-remove-line:hover { text-decoration: underline; }
+    .qb-add-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; background: #e2e8f0; color: #0f172a; border-radius: 6px; font-size: 13px; font-weight: 700; border: none; cursor: pointer; transition: background 0.2s; }
+    .qb-add-btn:hover { background: #cbd5e1; }
+
+    .qb-toggle-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .qb-toggle-label { font-size: 14px; font-weight: 600; color: #0f172a; }
+    .qb-toggle { position: relative; display: inline-block; width: 44px; height: 24px; flex-shrink: 0; }
+    .qb-toggle input { opacity: 0; width: 0; height: 0; }
+    .qb-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .3s; border-radius: 24px; }
+    .qb-slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+    .qb-toggle input:checked + .qb-slider { background-color: #1e293b; }
+    .qb-toggle input:checked + .qb-slider:before { transform: translateX(20px); }
+    .qb-total-box { background: #f1f5f9; padding: 14px 16px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-weight: 700; color: #475569; margin-bottom: 16px; font-size: 14px; }
+    .qb-total-val { font-size: 16px; color: #0f172a; font-weight: 900; }
+    .qb-upload-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px; border: 1px solid #cbd5e1; background: #fff; border-radius: 6px; color: #0f172a; font-weight: 600; cursor: pointer; margin-bottom: 16px; transition: background 0.2s; font-size: 14px; }
+    .qb-upload-btn:hover { background: #f8fafc; }
+    .qb-upload-icon { width: 18px; height: 18px; }
+
+    .prompt-block {
+      padding: 12px;
+      margin: 10px 0;
+    }
+
+    .prompt-label {
+      font-size: 13px;
+      font-weight: 400;
+      margin: 0 0 8px;
+      color: #f9faff;
+    }
+
+    .prompt-text {
+      white-space: pre-wrap;
+      font-family: inherit;
+      font-size: 14px;
+      line-height: 1.45;
+      margin: 0 0 10px;
+      font-weight: 400;
+      color: #f9faff;
+    }
+
+    .copy-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .copy-btn {
+      background: #e75a00;
+      color: #f9faff;
+      border: 2px solid #e75a00;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .copy-btn:hover {
+      filter: brightness(0.95);
+    }
+
+    .copy-btn:active {
+      transform: translateY(1px);
+    }
+
+    .chatbot-badge a {
+      color: #f9faff;
+      text-decoration: none;
+      border-bottom: 1px solid #f9faff;
+      padding-bottom: 1px;
+      font-size: 14px;
+    }
+
+    .chatbot-badge a:hover {
+      opacity: 0.7;
+    }
+
+    .help-block {
+      margin-top: 8px;
+    }
+
+    .help-head {
+      font-weight: 700;
+      margin-top: 14px;
+    }
+
+    .help-head:first-child {
+      margin-top: 0;
+    }
+
+    .help-text {
+      font-weight: 400;
+      margin: 6px 0 0;
+    }
+
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 18px 24px;
+    }
+
+    .footer-inner {
+      background: #f9faff;
+      color: #313131;
+      border-radius: 18px;
+      padding: 24px;
+      font-size: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      box-shadow: 0 10px 24px rgba(12, 18, 44, 0.22);
+    }
+
+    .footer-inner a {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-left div {
+      line-height: 1.5;
+    }
+
+    .footer-centre {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      min-width: 200px;
+      text-align: center;
+    }
+
+    .footer-centre-logo {
+      width: 164px;
+      height: auto;
+      display: block;
+    }
+
+    .footer-centre span {
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-logout-btn {
+      background: #313131;
+      color: #f9faff;
+      border: 2px solid #313131;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer-logout-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    @media (max-width: 640px) {
+      .header-hero-img {
+        height: 220px;
+        object-fit: cover;
+        object-position: center center;
+      }
+
+      .menu-btn {
+        right: 10px;
+        top: 10px;
+        min-width: 50px;
+        min-height: 50px;
+        padding: 9px;
+      }
+
+      .menu-icon {
+        width: 28px;
+        height: 20px;
+      }
+
+      .menu-icon span {
+        height: 3px;
+      }
+
+      .menu-panel {
+        width: min(320px, 94vw);
+        padding: calc(12px + env(safe-area-inset-top)) 14px calc(16px + env(safe-area-inset-bottom));
+        gap: 8px;
+      }
+
+      .nav-categories {
+        font-size: 28px;
+        margin: 2px 0 10px;
+      }
+
+      .menu-item {
+        font-size: 20px;
+        padding: 10px 8px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-left {
+        align-items: center;
+      }
+
+      .footer-centre {
+        order: -1;
+      }
+
+      .footer-right {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .header-hero-img {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+
+<body class="auth-pending">
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <img class="header-hero-img" src="./AdvisaStacks Header Final.png" alt="Main App Header" />
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="menuPanel" aria-haspopup="true" aria-expanded="false">
+        <span class="menu-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <div class="menu-backdrop" id="menuBackdrop"></div>
+  <nav class="menu-panel" id="menuPanel" aria-label="Categories" aria-hidden="true">
+    <h2 class="nav-categories">Categories</h2>
+    <button class="menu-item active" data-key="Winning Work">Winning Work</button>
+    <button class="menu-item" data-key="Getting Paid">Getting Paid</button>
+    <button class="menu-item" data-key="Job Updates">Job Updates</button>
+    <button class="menu-item" data-key="Reviews & Referrals">Reviews & Referrals</button>
+    <button class="menu-item" data-key="Get More Enquiries">Get More Enquiries</button>
+    <button class="menu-item" data-key="Fix My Message">Fix My Message</button>
+    <button class="menu-item" data-key="Templates">Templates</button>
+    <button class="menu-item" data-key="Favourites">Favourites</button>
+    <button class="menu-item" data-key="Prompt Library">Prompt Library</button>
+    <div style="flex:1;"></div>
+    <button class="menu-item" id="logoutBtn" style="background:#313131; border-color:#313131; color:#f9faff;">Log out</button>
+  </nav>
+
+  <main>
+    <div class="page-title" id="pageTitle"></div>
+    <div class="page-help" id="pageHelp"></div>
+
+    <div class="global-inputs">
+      <div class="global-field">
+        <label for="globalFirstName">Your First Name</label>
+        <input type="text" id="globalFirstName" placeholder="e.g. John" autocomplete="given-name" />
+      </div>
+      <div class="global-field">
+        <label for="globalBizName">Business Name</label>
+        <input type="text" id="globalBizName" placeholder="e.g. Smith Plumbing" autocomplete="organization" />
+      </div>
+      <div class="global-actions">
+        <button type="button" class="reset-defaults-btn" id="resetDefaultsBtn">Reset defaults</button>
+      </div>
+    </div>
+
+    <div class="grid" id="cardGrid"></div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div><a href="./privacy-policy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="./legal-disclaimer.html">Legal Disclaimer</a></div>
+        <div>E: <a href="mailto:info@advisastacks.com">info@advisastacks.com</a></div>
+        <div>P: <a href="tel:+61434360660">+61 434 360 660</a></div>
+        <div>ABN: 37 131 434 727</div>
+      </div>
+      <div class="footer-centre">
+        <img src="./advisastacks-logo.png" alt="AdvisaStacks logo" class="footer-centre-logo" />
+        <span>Made by AdvisaStacks</span>
+      </div>
+      <div class="footer-right">
+        <button class="footer-logout-btn" id="footerLogoutBtn">Log out</button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./auth-config.js"></script>
+  <script>
+    (function () {
+      const ACTIVE_SUBSCRIPTION_STATUSES = new Set(["active", "trialing"]);
+      const SUPABASE_URL = window.SUPABASE_URL || "";
+      const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || "";
+      const missingConfig =
+        !SUPABASE_URL ||
+        !SUPABASE_ANON_KEY ||
+        SUPABASE_URL.includes("YOUR-PROJECT-ID") ||
+        SUPABASE_ANON_KEY.includes("YOUR_SUPABASE_ANON_KEY");
+
+      if (missingConfig) {
+        document.body.classList.remove("auth-pending");
+        return;
+      }
+
+      const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      window.__supabase = supabaseClient;
+
+      supabaseClient.auth
+        .getSession()
+        .then(async ({ data, error }) => {
+          if (error || !data.session) {
+            window.location.replace("./login.html");
+            return;
+          }
+
+          const accessToken = data.session.access_token;
+
+          try {
+            const twoFaResp = await fetch("/api/verify-login-code", {
+              method: "POST",
+              headers: {
+                Authorization: "Bearer " + accessToken,
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({ check: true })
+            });
+            if (twoFaResp.ok) {
+              const twoFaResult = await twoFaResp.json();
+              if (!twoFaResult.verified) {
+                window.location.replace("./login.html");
+                return;
+              }
+            } else {
+              window.location.replace("./login.html");
+              return;
+            }
+          } catch (_twoFaError) {
+            window.location.replace("./login.html");
+            return;
+          }
+
+          try {
+            const syncResp = await fetch("/api/sync-subscription", {
+              method: "POST",
+              headers: {
+                Authorization: "Bearer " + accessToken
+              }
+            });
+            if (syncResp.ok) {
+              const syncPayload = await syncResp.json();
+              if (syncPayload && syncPayload.active) {
+                document.body.classList.remove("auth-pending");
+                return;
+              }
+            }
+          } catch (_syncError) {
+          }
+
+          const userId = data.session.user.id;
+          const { data: subscription, error: subscriptionError } = await supabaseClient
+            .from("billing_subscriptions")
+            .select("status")
+            .eq("user_id", userId)
+            .maybeSingle();
+
+          if (subscriptionError) {
+            window.location.replace("./billing.html");
+            return;
+          }
+
+          const isActive = ACTIVE_SUBSCRIPTION_STATUSES.has(subscription?.status || "inactive");
+          if (!isActive) {
+            window.location.replace("./billing.html");
+            return;
+          }
+          document.body.classList.remove("auth-pending");
+        })
+        .catch(() => {
+          window.location.replace("./login.html");
+        });
+    })();
+  </script>
+  <script>
+    const APP = {
+      "Winning Work": {
+        "title": "Winning Work",
+        "cards": [{
+            "subtitle": "Quote Follow-Up (24 hours)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Nudge the client to approve the quote without sounding pushy.",
+              "when": "24–48 hours after sending a quote.",
+              "goodFor": "Getting a clear yes or next step without chasing.",
+              "roi": "More quotes accepted, fewer jobs going cold.",
+              "tip": "Keep it short. Ask one clear question."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Direct"]
+                },
+                {
+                  "label": "Next step",
+                  "options": ["Approve the quote", "Book a site visit", "Choose a start date"]
+                }
+              ],
+              "fields": ["[Client name]", "[Job type]", "[Quote sent date]", "[Next step link or instruction]"]
+            },
+            "prompts": ["Write a [Channel] to [Client name] following up a quote sent [Quote sent date] for [Job type].\n\nTone: [Tone].\nGoal: get them to take the next step: [Next step].\nInclude:\n- 1 polite line checking they received it\n- 1 line summarising the job in plain English\n- 1 clear question as the call to action\n- optional: 1 sentence about next availability if helpful\n\nAdd this at the end: [Next step link or instruction].\nReturn 2 versions."]
+          },
+          {
+            "subtitle": "Quote Follow-Up (3–5 days)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Bring the job back to the top of their mind and close the loop.",
+              "when": "3–5 days after quote, or when they have gone quiet.",
+              "goodFor": "Getting a yes or no, and freeing up your diary if it is a no.",
+              "roi": "Fewer dead quotes, steadier pipeline.",
+              "tip": "Give an easy out, hold a spot or close it off."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Firm"]
+                },
+                {
+                  "label": "Urgency",
+                  "options": ["None", "We are booking up", "Quote valid until (date)"]
+                },
+                {
+                  "label": "Offer",
+                  "options": ["Call me", "Text OK to proceed", "Pick a date"]
+                }
+              ],
+              "fields": ["[Client name]", "[Job type]", "[Availability window]"]
+            },
+            "prompts": ["Write a short [Channel] to [Client name].\n\nContext: I sent a quote for [Job type] about 3–5 days ago and have not heard back.\nTone: [Tone]. No AI language.\n\nGoal: prompt a decision (yes/no) and make it easy.\nInclude:\n- friendly check in\n- simple reminder of what the quote covers\n- one clear question: proceed, adjust scope, or close it off?\nOptional urgency: [Urgency].\nMake the next step: [Offer].\nOptional availability: [Availability window].\n\nReturn 2 versions."]
+          },
+          {
+            "subtitle": "Handling “Can you do it cheaper?”",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Hold your price without being awkward, and keep the job alive.",
+              "when": "Client asks for a discount or tries to negotiate.",
+              "goodFor": "Protecting margin while offering sensible options.",
+              "roi": "Better margins, fewer problem jobs.",
+              "tip": "Do not discount first. Offer scope options (Good / Better / Best)."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Approach",
+                  "options": ["Hold price", "Offer options", "Offer small concession"]
+                }
+              ],
+              "fields": ["[Client name]", "[Job type]", "[Quote amount]", "[What’s included]", "[What can be adjusted]"]
+            },
+            "prompts": ["Write a reply for [Channel] to [Client name] about [Job type]. Quote amount: [Quote amount].\nWhat the quote includes: [What’s included].\n\nThe client said: \"Can you do it cheaper?\"\nKeep it calm, confident, and practical. No AI language.\n\nGoal:\n- acknowledge the question\n- explain briefly what drives the price (time, materials, warranty, quality)\n- avoid sounding defensive\n- give a clear path forward using one of these approaches: [Approach]\n\nIf using options, give:\n- Option A (same scope, same price)\n- Option B (reduced scope or alternative material) with a lower price range\n- Option C (premium or add on) if relevant\n\nEnd with one clear question: \"Which option do you want to go with?\" or \"Want me to adjust the scope to fit your budget?\"\nReturn 2 variations."]
+          },
+          {
+            "subtitle": "Turn an enquiry into a booked site visit",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Convert a “How much?” enquiry into a booked time.",
+              "when": "New lead asks for price or availability.",
+              "goodFor": "Qualifying quickly and booking the next step.",
+              "roi": "More booked visits, faster quoting, higher close rate.",
+              "tip": "Ask 2–3 qualifying questions, then offer 2 time options."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Lead source",
+                  "options": ["Facebook", "Google", "Referral", "Website form"]
+                },
+                {
+                  "label": "Booking style",
+                  "options": ["Offer 2 times", "Ask for best time"]
+                }
+              ],
+              "fields": ["[Client name]", "[Job type]", "[Suburb]", "[Two time options]", "[What you need to know]"]
+            },
+            "prompts": ["Write a [Channel] reply to a new enquiry.\n\nLead source: [Lead source].\nThey asked: \"[paste their message]\"\n\nGoal: book a site visit (or call) to quote properly.\nDetails:\n- Job type: [Job type]\n- Suburb: [Suburb]\n- Offer these time options: [Booking style] -> [Two time options]\n- I need these details before arriving: [What you need to know] (max 3 questions)\n\nRules:\n- sound professional and friendly\n- no fluff\n- ask 2–3 short questions\n- offer the two time slots\n- include what to expect (for example, “I will confirm price after a quick look”)\n\nReturn 2 versions."]
+          },
+          {
+            "subtitle": "Explain why your quote costs more",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Justify your price and reduce “shopping around” objections.",
+              "when": "Client says you are more expensive than others.",
+              "goodFor": "Keeping the job alive without racing to the bottom.",
+              "roi": "Higher close rate at your price point.",
+              "tip": "Focus on risk and outcomes, not hype."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Emphasis",
+                  "options": ["Quality", "Warranty", "Compliance", "Speed", "Clean finish"]
+                }
+              ],
+              "fields": ["[Client name]", "[Job type]", "[Key differentiators]", "[One risk you reduce]"]
+            },
+            "prompts": ["Write a [Channel] to [Client name] about [Job type]. Natural, confident, no AI language.\n\nClient says: \"Your quote is higher than the others.\"\n\nMy key differentiators: [Emphasis] (for example, warranty, licensed work, quality materials, clean finish, reliable timeframe).\nRisk I reduce: [One risk you reduce] (for example, rework, non compliance, delays).\n\nGoal: explain value in plain English and keep the door open.\nStructure:\n- acknowledge\n- 2–3 bullets or short sentences explaining what is included and why it matters\n- invite them to compare like for like (scope, materials, warranty)\n- end with a simple question: proceed, adjust scope, or jump on a quick call\n\nReturn 2 versions."]
+          },
+          {
+            "subtitle": "Upsell extra work during quoting (Good / Better / Best)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Increase job value without being salesy.",
+              "when": "While quoting or on site, when add ons make sense.",
+              "goodFor": "Presenting upgrades clearly so clients choose more value.",
+              "roi": "Higher average job value and better margins.",
+              "tip": "Position upgrades as options, not pressure."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Helpful", "Direct"]
+                },
+                {
+                  "label": "Format",
+                  "options": ["Good-Better-Best", "Add on list"]
+                }
+              ],
+              "fields": ["[Client name]", "[Job type]", "[Base scope]", "[Option 1] — [Price range]", "[Option 2] — [Price range]", "[Option 3] — [Price range]"]
+            },
+            "prompts": ["Write a [Channel] to [Client name] presenting quote options for [Job type].\nKeep it helpful and practical. No AI language.\n\nTone: [Tone].\nFormat: [Format].\n\nBase scope: [Base scope]\nAdd on or upgrade options:\n1) [Option 1] — [Price range]\n2) [Option 2] — [Price range]\n3) [Option 3] — [Price range]\n\nGoal: make it easy to choose.\nRules:\n- present as choices, not pressure\n- explain each option in one simple benefit sentence (time saved, longer life, less maintenance, better finish)\n- end with one clear question: “Which option do you want me to quote or lock in?”\n\nReturn 2 versions."]
+          }
+        ]
+      },
+      "Getting Paid": {
+        "title": "Getting Paid",
+        "cards": [{
+            "subtitle": "Invoice Reminder (Friendly — 1–3 days overdue)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "when": "1–3 days overdue, you want to keep it friendly.",
+              "goodFor": "Residential + good clients who probably forgot.",
+              "roi": "Faster payments, fewer follow-ups.",
+              "tip": "Assume it’s a simple miss. Give one easy payment option."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Direct"]
+                },
+                {
+                  "label": "Include",
+                  "options": ["Bank details", "Payment link", "Both"]
+                }
+              ],
+              "fields": ["[Client name]", "[Invoice #]", "[Amount]", "[Due date]", "[Payment link or bank details]", "[Job type / address]"]
+            },
+            "prompts": [
+              "Write a [Channel]. Situation: Invoice is 1–3 days overdue.\n\nTone: [Tone]. Plain English. No AI language.\n\nDetails:\nClient: [Client name]\nInvoice: [Invoice #]\nAmount: [Amount]\nDue date: [Due date]\nPayment info: [Include] — [Payment link or bank details]\nJob summary (optional): [Job type / address]\n\nWrite a short message that:\n- assumes they missed it\n- includes the amount and invoice number\n- gives one clear way to pay\n- ends with one clear question (e.g. “Can you please sort this today?”)\n\nReturn 2 versions."
+            ]
+          },
+          {
+            "subtitle": "Invoice Reminder (Firm — 7+ days overdue)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "when": "7+ days overdue or multiple follow-ups.",
+              "goodFor": "Clients stalling.",
+              "roi": "Protects cashflow, reduces time chasing.",
+              "tip": "Be calm + specific. Ask for a payment time."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Firm", "Very firm"]
+                },
+                {
+                  "label": "Next step",
+                  "options": ["Pay today", "Confirm payment time", "Call required"]
+                }
+              ],
+              "fields": ["[Client name]", "[Invoice #]", "[Amount]", "[Due date]", "[X days]", "[Payment link or bank details]"]
+            },
+            "prompts": [
+              "Write a [Channel]. Situation: Invoice is [X days] overdue and I need a clear payment time.\n\nTone: [Tone]. Calm, professional. No threats, no AI language.\n\nDetails:\nClient: [Client name]\nInvoice: [Invoice #]\nAmount: [Amount]\nDue date: [Due date]\nPayment info: [Payment link or bank details]\n\nWrite a message that:\n- states the invoice is overdue\n- asks for: [Next step]\n- is firm but not rude\n- includes one clear call to action\n\nReturn 2 versions."
+            ]
+          },
+          {
+            "subtitle": "Final Notice (Still professional)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "when": "Multiple follow-ups, no response.",
+              "goodFor": "Final nudge before escalation.",
+              "roi": "Stops endless chasing.",
+              "tip": "State what happens next (pause work, formal follow-up), without drama."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Action",
+                  "options": ["Pause further work", "Formal reminder", "Debt collection"]
+                }
+              ],
+              "fields": ["[Client name]", "[Invoice #]", "[Amount]", "[Due date]", "[date/time]", "[Payment link or bank details]"]
+            },
+            "prompts": [
+              "Write a [Channel] issuing a final notice.\n\nTone: Firm, professional, no insults, no AI language.\nGoal: get payment or a confirmed payment date by [date/time].\n\nDetails:\nClient: [Client name]\nInvoice: [Invoice #]\nAmount: [Amount]\nDue date: [Due date]\nDeadline to respond/pay: [date/time]\nNext action if unpaid: [Action]\nPayment info: [Payment link or bank details]\n\nWrite:\n- clear overdue statement\n- clear deadline\n- clear next step (what happens if not paid)\n- polite close\n\nReturn 2 versions."
+            ]
+          },
+          {
+            "subtitle": "Deposit Request (Before booking in)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "when": "After quote accepted, before scheduling/ordering.",
+              "goodFor": "Protecting cash + reducing cancellations.",
+              "roi": "Fewer no-shows, less risk.",
+              "tip": "Explain what the deposit covers."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Reason",
+                  "options": ["Lock in booking", "Order materials", "Both"]
+                }
+              ],
+              "fields": ["[Client name]", "[Job type]", "[Deposit $ or %]", "[Payment link or bank details]", "[date]"]
+            },
+            "prompts": [
+              "Write a [Channel] requesting a deposit.\n\nTone: Friendly, clear, confident. No AI language.\n\nDetails:\nClient: [Client name]\nJob: [Job type]\nDeposit amount: [Deposit $ or %]\nReason: [Reason]\nPreferred payment method: [Payment link or bank details]\nProposed start date (optional): [date]\n\nWrite a message that:\n- thanks them for proceeding\n- explains deposit purpose in one sentence\n- gives payment instructions\n- confirms what happens after payment (booking confirmed / materials ordered)\n\nReturn 2 versions."
+            ]
+          },
+          {
+            "subtitle": "Progress Payment Request (Mid-job)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "when": "Milestone reached, staged payments.",
+              "goodFor": "Larger jobs, multi-day work.",
+              "roi": "Stops cashflow crunch mid-job.",
+              "tip": "Tie it to progress and next steps."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Milestone",
+                  "options": ["Rough-in complete", "Materials delivered", "Day X complete"]
+                }
+              ],
+              "fields": ["[Client name]", "[Job type]", "[Amount]", "[Today / date]", "[Payment link or bank details]"]
+            },
+            "prompts": [
+              "Write a [Channel] requesting a progress payment.\n\nTone: Direct but polite. No AI language.\n\nDetails:\nClient: [Client name]\nJob: [Job type]\nMilestone completed: [Milestone]\nProgress payment amount: [Amount]\nDue: [Today / date]\nPayment info: [Payment link or bank details]\n\nWrite a message that:\n- confirms milestone completed\n- requests the progress payment\n- states what’s next once paid (continue work / schedule next stage)\n\nReturn 2 versions."
+            ]
+          },
+          {
+            "subtitle": "Payment Terms (Set expectations upfront)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "when": "Before starting work / sending quote.",
+              "goodFor": "Reducing disputes later.",
+              "roi": "Fewer late payments.",
+              "tip": "Keep it simple: due date, method, late fees (if used)."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Where used",
+                  "options": ["Quote", "Invoice", "Booking confirmation"]
+                },
+                {
+                  "label": "Terms",
+                  "options": ["Due on completion", "7 days", "Deposit required"]
+                },
+                {
+                  "label": "Late policy",
+                  "options": ["Late fee", "Pause work", "None"]
+                }
+              ],
+              "fields": ["[card/bank transfer/etc]"]
+            },
+            "prompts": [
+              "Write a short “Payment Terms” section.\n\nWhere this will appear: [Where used]\nTerms: [Terms]\nAccepted payment methods: [card/bank transfer/etc]\nLate policy (optional): [Late policy]\n\nMake it plain English, short, and easy to understand.\nReturn:\n- a short version (3–4 lines)\n- a longer version (6–8 lines)"
+            ]
+          },
+          {
+            "subtitle": "Reply to “I’ll pay next week”",
+            "chatbot": "ChatGPT",
+            "front": {
+              "when": "They acknowledge but delay.",
+              "goodFor": "Getting a commitment date.",
+              "roi": "Less chasing, clear expectations.",
+              "tip": "Ask for exact day/time + confirm."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Direct", "Firm"]
+                },
+                {
+                  "label": "Preferred outcome",
+                  "options": ["Pay today", "Confirm date", "Set instalment"]
+                }
+              ],
+              "fields": ["[Client name]", "[Invoice #]", "[Amount]", "[Payment info]"]
+            },
+            "prompts": [
+              "Write a [Channel] reply.\n\nClient said: “I’ll pay next week.”\nGoal: [Preferred outcome].\n\nDetails:\nClient: [Client name]\nInvoice: [Invoice #]\nAmount: [Amount]\nPayment link/details: [Payment info]\n\nTone: [Tone]. No AI language.\n\nWrite a short reply that:\n- thanks them\n- asks for a specific day/time\n- confirms how to pay\n- optional: offers a split payment if appropriate\n\nReturn 2 versions (one softer, one firmer)."
+            ]
+          },
+          {
+            "subtitle": "Overdue + Dispute (Client pushing back)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "when": "They’re refusing to pay or raising an issue.",
+              "goodFor": "Staying calm + moving toward resolution.",
+              "roi": "Faster resolution, protects reputation.",
+              "tip": "Separate the issue from the payment plan."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["Email", "SMS"]
+                },
+                {
+                  "label": "Goal",
+                  "options": ["Arrange call", "Site visit", "Partial payment now"]
+                }
+              ],
+              "fields": ["[Client name]", "[Invoice #]", "[Amount]", "[brief issue summary]", "[summary of work completed]", "[e.g., inspect, fix, clarify scope]", "[e.g., pay undisputed portion now / pay after inspection by date]"]
+            },
+            "prompts": [
+              "Write a professional [Channel].\n\nSituation: Invoice is overdue and the client is disputing payment.\nIssue: [brief issue summary]\nGoal: [Goal]\n\nDetails:\nClient: [Client name]\nInvoice: [Invoice #]\nAmount: [Amount]\nWork completed: [summary of work completed]\nWhat I’m willing to do: [e.g., inspect, fix, clarify scope]\nPayment expectation: [e.g., pay undisputed portion now / pay after inspection by date]\n\nRules:\n- calm, factual, no blame\n- confirm next step and time\n- keep it short and clear\nReturn 2 versions."
+            ]
+          }
+        ]
+      },
+      "Job Updates": {
+        "title": "Job Updates",
+        "cards": [{
+            "subtitle": "Job Confirmation",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Confirm the job is booked and set expectations.",
+              "when": "Right after a quote is accepted or a job is booked.",
+              "goodFor": "Locking it in and preventing double bookings.",
+              "roi": "Fewer no-shows and wasted trips.",
+              "tip": "Include the date, time, and anything they need to do before you arrive."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Direct"]
+                },
+                {
+                  "label": "Requirement",
+                  "options": ["Clear access", "Secure pets", "None"]
+                }
+              ],
+              "fields": ["[Client name]", "[Job type]", "[Date]", "[Time]"]
+            },
+            "prompts": [
+              "Write a [Channel] confirming a job booking.\n\nClient: [Client name]\nJob: [Job type]\nDate: [Date]\nTime: [Time]\nRequirement: [Requirement]\nTone: [Tone]\n\nRules:\n- Plain English\n- No AI language\n- Give them peace of mind that we are locked in.\n\nReturn 2 versions."
+            ]
+          },
+          {
+            "subtitle": "On The Way Message",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Let the customer know you're coming and confirm arrival time.",
+              "when": "When you or your crew are heading to the site.",
+              "goodFor": "Making sure the client is home and ready.",
+              "roi": "No wasted trips or waiting at the gate.",
+              "tip": "Give a specific ETA so they aren't guessing."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "ETA",
+                  "options": ["15 mins", "30 mins", "1 hour"]
+                }
+              ],
+              "fields": ["[Client name]", "[Tech name]"]
+            },
+            "prompts": [
+              "Write a short [Channel].\n\nSituation: We are on the way to the job.\n\nDetails:\nClient: [Client name]\nTech name: [Tech name]\nETA: [ETA]\n\nRules:\n- Super short, friendly, plain English.\n- Ask them to confirm someone is there or access is clear.\n\nReturn 2 variations."
+            ]
+          },
+          {
+            "subtitle": "Running Late",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Send a professional message when you’re delayed.",
+              "when": "When you're running late and need to update the customer.",
+              "goodFor": "Keeping trust and avoiding annoyed customers.",
+              "roi": "Fewer complaints and follow-up calls.",
+              "tip": "Give a clear new arrival time."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Direct"]
+                },
+                {
+                  "label": "Delay reason",
+                  "options": ["Traffic", "Previous job ran over", "Materials delay"]
+                }
+              ],
+              "fields": ["[Client name]", "[Job type]", "[Original arrival time]", "[New arrival time]"]
+            },
+            "prompts": [
+              "Write a [Channel].\n\nSituation: I am running late to a job.\n\nDetails:\nClient name: [Client name]\nJob: [Job type]\nOriginal arrival time: [Original arrival time]\nNew arrival time: [New arrival time]\nReason (optional): [Delay reason]\n\nTone: [Tone]\n\nRules:\n- Plain English\n- Short sentences\n- Professional but relaxed\n- No AI language\n\nWrite a short message that:\n- apologises briefly\n- explains the delay if needed\n- confirms the new arrival time\n- reassures the customer\n\nReturn 2 versions."
+            ]
+          },
+          {
+            "subtitle": "Job Delay / Reschedule",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Explain delays and rebook without frustrating the customer.",
+              "when": "When weather, sickness, or parts delay the job by days.",
+              "goodFor": "Breaking bad news without losing the client.",
+              "roi": "Saves the job and protects your reputation.",
+              "tip": "Give a solution immediately, not just the problem."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Reason",
+                  "options": ["Weather", "Parts delayed", "Staff sickness"]
+                }
+              ],
+              "fields": ["[Client name]", "[Job type]", "[Original date]", "[New proposed date]"]
+            },
+            "prompts": [
+              "Write a [Channel].\n\nSituation: We need to delay and reschedule a job.\n\nDetails:\nClient: [Client name]\nJob: [Job type]\nOriginal date: [Original date]\nReason: [Reason]\nNew date: [New proposed date]\n\nRules:\n- No AI language\n- Plain English\n- Apologise, explain briefly, offer the new date, and ask if it works.\n\nReturn 2 versions."
+            ]
+          },
+          {
+            "subtitle": "Job Update During Work",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Let the customer know what’s happening on site.",
+              "when": "End of day on a multi-day job, or if the client isn't on site.",
+              "goodFor": "Showing progress and proving value.",
+              "roi": "Massive trust boost, stops them nagging.",
+              "tip": "Highlight what's done, what's next, and any roadblocks."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Roadblocks",
+                  "options": ["None", "Need a decision", "Need site access"]
+                }
+              ],
+              "fields": ["[Client name]", "[Completed today]", "[Plan for tomorrow]"]
+            },
+            "prompts": [
+              "Write a [Channel] update.\n\nSituation: Updating the client on today's progress.\n\nDetails:\nClient: [Client name]\nDone today: [Completed today]\nPlan for tomorrow: [Plan for tomorrow]\nRoadblocks: [Roadblocks]\n\nRules:\n- No AI language\n- Plain English\n- Dot points are good for readability.\n\nReturn 2 versions."
+            ]
+          },
+          {
+            "subtitle": "Job Complete Message",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Wrap up the job and confirm next steps.",
+              "when": "Right after packing up and leaving the site.",
+              "goodFor": "Wrapping the job up professionally.",
+              "roi": "Sets the stage for fast payment and 5-star reviews.",
+              "tip": "Thank them and mention the invoice is coming."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Next step",
+                  "options": ["Invoice attached", "Invoice coming soon", "Please leave a review"]
+                }
+              ],
+              "fields": ["[Client name]", "[Job type]"]
+            },
+            "prompts": [
+              "Write a [Channel].\n\nSituation: Job is finished and we have left the site.\n\nDetails:\nClient: [Client name]\nJob: [Job type]\nNext step: [Next step]\n\nRules:\n- Friendly, proud of the work\n- Plain English\n- No AI language\n\nReturn 2 versions."
+            ]
+          },
+          {
+            "subtitle": "Request Info Before Arrival",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Ask for photos, access details, or measurements.",
+              "when": "When you need details before you can quote or start.",
+              "goodFor": "Stopping blind call-outs.",
+              "roi": "Saves fuel and time.",
+              "tip": "Tell them exactly what to photograph or measure."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Helpful", "Direct"]
+                },
+                {
+                  "label": "Needed",
+                  "options": ["Site photos", "Measurements", "Access code"]
+                }
+              ],
+              "fields": ["[Client name]", "[Job type]"]
+            },
+            "prompts": [
+              "Write a [Channel].\n\nSituation: Need more info before arriving.\n\nDetails:\nClient: [Client name]\nJob: [Job type]\nInfo needed: [Needed]\nTone: [Tone]\n\nRules:\n- Plain English\n- No AI language\n- Explain that providing this helps us prepare better and faster.\n\nReturn 2 versions."
+            ]
+          },
+          {
+            "subtitle": "Set Expectations (Scope / Access / Prep)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Prevent misunderstandings before starting work.",
+              "when": "Days before a messy or disruptive job.",
+              "goodFor": "Stopping complaints about noise, mess, or power cuts.",
+              "roi": "Zero day-of-job arguments.",
+              "tip": "Be blunt about the disruption so they can prepare."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["Email", "SMS"]
+                },
+                {
+                  "label": "Disruption",
+                  "options": ["Power off", "Water off", "Loud noise", "Messy"]
+                }
+              ],
+              "fields": ["[Client name]", "[Job type]", "[Prep needed e.g., move cars]"]
+            },
+            "prompts": [
+              "Write a [Channel].\n\nSituation: Warning the client about disruption before we start a job.\n\nDetails:\nClient: [Client name]\nJob: [Job type]\nDisruption expected: [Disruption]\nClient needs to do this prep: [Prep needed e.g., move cars]\n\nRules:\n- Professional, clear\n- Plain English\n- No AI language\n- Better to warn them now than surprise them later.\n\nReturn 2 versions."
+            ]
+          }
+        ]
+      },
+      "Reviews & Referrals": {
+        "title": "Reviews & Referrals",
+        "cards": [{
+            "subtitle": "Google Review Request (Same day)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "when": "Right after you finish the job (best conversion).",
+              "goodFor": "Happy customers on-site.",
+              "roi": "More reviews, more enquiries.",
+              "tip": "Keep it short. Include the link."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Direct"]
+                },
+                {
+                  "label": "Include",
+                  "options": ["Link only", "Suggest what to mention", "Both"]
+                }
+              ],
+              "fields": ["[Client name]", "[Job type]", "[Review link]", "[what you did / outcome]"]
+            },
+            "prompts": [
+              "Write a [Channel] asking for a Google review.\n\nTone: [Tone]. No AI language. Keep it short.\n\nDetails:\nClient: [Client name]\nJob: [Job type]\nOne-line result (optional): [what you did / outcome]\nGoogle review link: [Review link]\nInclude: [Include]\n\nWrite a message that:\n- thanks them\n- asks for a quick Google review\n- includes the link\n- optional: suggests 1–2 things they could mention (punctual, tidy, quality, communication)\n\nReturn 2 versions."
+            ]
+          },
+          {
+            "subtitle": "Ask for a Referral (Without being pushy)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "when": "After a good job / happy customer feedback.",
+              "goodFor": "Generating warm leads.",
+              "roi": "Better leads than ads.",
+              "tip": "Ask for “one person” not “anyone”."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Direct"]
+                },
+                {
+                  "label": "Referral type",
+                  "options": ["Neighbour/friend", "Local Facebook group", "Workmates"]
+                }
+              ],
+              "fields": ["[Client name]", "[What service you want referrals for]", "[My number / best contact method]"]
+            },
+            "prompts": [
+              "Write a [Channel] asking for a referral.\n\nTone: [Tone]. No AI language.\n\nDetails:\nClient: [Client name]\nService: [What service you want referrals for]\nReferral type: [Referral type]\nHow to refer: [My number / best contact method]\n\nWrite a message that:\n- thanks them\n- asks if they know one person who might need [What service you want referrals for]\n- makes it easy to pass on your details\nReturn 2 versions."
+            ]
+          },
+          {
+            "subtitle": "Review Follow-up (They didn’t do it)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "when": "3–7 days after you asked.",
+              "goodFor": "Busy customers who forgot.",
+              "roi": "Converts “intention” into action.",
+              "tip": "One gentle nudge only."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Direct"]
+                }
+              ],
+              "fields": ["[Client name]", "[Review link]"]
+            },
+            "prompts": [
+              "Write a short follow-up [Channel].\n\nContext: I previously asked for a Google review and they haven’t done it yet.\nTone: [Tone]. No AI language. Keep it polite.\n\nDetails:\nClient: [Client name]\nGoogle review link: [Review link]\n\nWrite a message that:\n- is friendly\n- acknowledges they’re busy\n- includes the link again\n- makes it easy to do now\n\nReturn 2 versions."
+            ]
+          },
+          {
+            "subtitle": "Reply to a Negative Review (Calm + professional)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "when": "Negative review appears.",
+              "goodFor": "Protecting reputation.",
+              "roi": "Stops damage, shows professionalism.",
+              "tip": "Don’t argue. Invite them to contact you."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Tone",
+                  "options": ["Calm", "Firm-professional"]
+                },
+                {
+                  "label": "Goal",
+                  "options": ["Resolve privately", "Clarify facts", "Offer fix"]
+                }
+              ],
+              "fields": ["[PASTE REVIEW]", "[FACTS]", "[phone/email]"]
+            },
+            "prompts": [
+              "Write a professional public reply to this negative Google review.\n\nTone: [Tone]. No AI language. No arguing.\n\nNegative review:\n[PASTE REVIEW]\n\nFacts (brief, optional):\n[FACTS]\n\nGoal: [Goal]\nContact method: [phone/email]\n\nWrite a reply that:\n- acknowledges their experience\n- avoids blaming\n- invites them to contact you to resolve it\n- stays short and professional\nReturn 2 versions."
+            ]
+          },
+          {
+            "subtitle": "Reply to a Positive Review",
+            "chatbot": "ChatGPT",
+            "front": {
+              "when": "Someone leaves a good review — respond publicly.",
+              "goodFor": "Trust + professionalism.",
+              "roi": "Helps conversions.",
+              "tip": "Mention the job type + thank them."
+            },
+            "ui": {
+              "quickInputs": [{
+                "label": "Tone",
+                "options": ["Friendly", "Professional"]
+              }],
+              "fields": ["[Name]", "[Job type]", "[Suburb]"]
+            },
+            "prompts": [
+              "Write a short public reply to a positive Google review.\n\nTone: [Tone]. No AI language.\n\nDetails:\nReviewer name: [Name]\nJob type: [Job type]\nSuburb (optional): [Suburb]\n\nWrite a reply that:\n- thanks them\n- mentions the job briefly\n- invites them to reach out again\nReturn 2 options."
+            ]
+          },
+          {
+            "subtitle": "Google Review Request (After invoice paid)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "when": "Once payment is received (clean close).",
+              "goodFor": "Customers who liked the work but you forgot to ask.",
+              "roi": "Turns finished jobs into social proof.",
+              "tip": "Make it easy, don’t guilt them."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Direct"]
+                }
+              ],
+              "fields": ["[Client name]", "[Job type]", "[Review link]"]
+            },
+            "prompts": [
+              "Write a [Channel].\n\nContext: Job is complete and invoice has been paid. I’m asking for a Google review.\nTone: [Tone]. No AI language.\n\nDetails:\nClient: [Client name]\nJob: [Job type]\nGoogle review link: [Review link]\n\nWrite a short message that:\n- thanks them again\n- asks for a quick review\n- includes the link\nReturn 2 versions."
+            ]
+          },
+          {
+            "subtitle": "Referral Thank You (Simple + professional)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "when": "After someone refers a new customer.",
+              "goodFor": "Building loyalty + more referrals.",
+              "roi": "Encourages repeat behaviour.",
+              "tip": "Be specific: “Thanks for sending [Name] my way.”"
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Direct"]
+                }
+              ],
+              "fields": ["[Client name]", "[Name]"]
+            },
+            "prompts": [
+              "Write a short [Channel] thanking someone for a referral.\n\nTone: [Tone]. No AI language.\n\nDetails:\nClient: [Client name]\nReferred person (optional): [Name]\n\nWrite a message that:\n- thanks them genuinely\n- acknowledges the referral\n- keeps it short and friendly\nReturn 2 versions."
+            ]
+          },
+          {
+            "subtitle": "Turn a Review into a Short Testimonial Blurb",
+            "chatbot": "ChatGPT",
+            "front": {
+              "when": "After getting a review, to reuse in marketing.",
+              "goodFor": "Website / socials / quotes.",
+              "roi": "More trust, more leads.",
+              "tip": "Keep it real. Don’t over-polish."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Use for",
+                  "options": ["Website", "Instagram", "Quote PDF", "Facebook"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Plain", "Polished"]
+                }
+              ],
+              "fields": ["[PASTE REVIEW]", "[Business name]", "[Service type]"]
+            },
+            "prompts": [
+              "Rewrite this customer review into 3 short testimonial versions.\n\nUse for: [Use for]\nTone: [Tone]\nBusiness: [Business name]\nService type: [Service type]\n\nReview text:\n[PASTE REVIEW]\n\nRules:\n- keep it believable (no hype)\n- keep it short\nReturn:\n1) 1 sentence version\n2) 2 sentence version\n3) 1 punchy version (max 12 words)"
+            ]
+          },
+          {
+            "subtitle": "Ask for Photos of the Job (For socials)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "when": "After completing a job (or when customer shares photos).",
+              "goodFor": "Marketing content without effort.",
+              "roi": "Better content, more enquiries.",
+              "tip": "Make it easy: “Can you text them to me?”"
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Direct"]
+                },
+                {
+                  "label": "How to send",
+                  "options": ["Text them to me", "Email them", "Upload link"]
+                },
+                {
+                  "label": "What photos",
+                  "options": ["Before/after", "Finished result", "Install"]
+                }
+              ],
+              "fields": ["[Client name]"]
+            },
+            "prompts": [
+              "Write a [Channel] asking a customer for photos of the completed job.\n\nTone: [Tone]. No AI language.\n\nDetails:\nClient: [Client name]\nWhat photos: [What photos]\nHow to send: [How to send]\n\nWrite a message that:\n- thanks them\n- asks for photos\n- explains it helps the business\nReturn 2 versions."
+            ]
+          },
+          {
+            "subtitle": "“Can I use this as a case study?” (Permission message)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "when": "Great job, you want permission to use it in marketing.",
+              "goodFor": "Compliance + trust.",
+              "roi": "Stronger social proof.",
+              "tip": "Keep it simple and give them an easy yes."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Channel",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Professional"]
+                },
+                {
+                  "label": "Permission requested",
+                  "options": ["Photos", "Testimonial", "Both"]
+                }
+              ],
+              "fields": ["[Client name]", "[Job type]"]
+            },
+            "prompts": [
+              "Write a [Channel] asking permission to use a completed job as a case study.\n\nTone: [Tone]. No AI language.\n\nDetails:\nClient: [Client name]\nJob type: [Job type]\nPermission requested: [Permission requested]\n\nWrite a message that:\n- thanks them\n- asks permission clearly\n- reassures them you won’t share private details\n- makes it easy to say yes/no\n\nReturn 2 versions."
+            ]
+          }
+        ]
+      },
+      "Get More Enquiries": {
+        "title": "Get More Enquiries",
+        "cards": [{
+            "subtitle": "Local Job Post (Facebook / Instagram)",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Show real work to attract local enquiries.",
+              "when": "After finishing a job.",
+              "goodFor": "Showing real work to attract local enquiries.",
+              "roi": "More messages from people in the area.",
+              "tip": "Include suburb name."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Platform",
+                  "options": ["Facebook", "Instagram", "Both"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Professional", "Witty"]
+                }
+              ],
+              "fields": ["[Job type]", "[Suburb]", "[What you did]", "[One thing they were happy with]"]
+            },
+            "prompts": [
+              "Write a social media post.\n\nPlatform: [Platform]\nTone: [Tone]\n\nDetails:\nJob type: [Job type]\nSuburb: [Suburb]\nWork completed: [What you did]\nCustomer outcome: [One thing they were happy with]\n\nWrite a short post that:\n- describes the job simply\n- mentions the suburb\n- highlights the result\n- invites people to message for a quote\n\nReturn:\n1 Facebook version\n1 Instagram version"
+            ]
+          },
+          {
+            "subtitle": "Before / After Job Post",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Showcase visual transformations.",
+              "when": "When you have photos showing the transformation.",
+              "goodFor": "High-engagement posts.",
+              "roi": "More shares and enquiries.",
+              "tip": "Keep captions simple."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Platform",
+                  "options": ["Facebook", "Instagram"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Professional", "Witty"]
+                }
+              ],
+              "fields": ["[Job type]", "[Suburb]", "[Problem before]", "[Result after]"]
+            },
+            "prompts": [
+              "Write a social media caption for a before-and-after job.\n\nPlatform: [Platform]\nTone: [Tone]\n\nDetails:\nJob type: [Job type]\nSuburb: [Suburb]\nProblem before: [Problem before]\nResult after: [Result after]\n\nWrite a caption that:\n- briefly explains the job\n- highlights the improvement\n- invites people to get in touch for similar work"
+            ]
+          },
+          {
+            "subtitle": "Answer a Common Customer Question",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Build authority by sharing knowledge.",
+              "when": "When customers ask the same question repeatedly.",
+              "goodFor": "Building authority.",
+              "roi": "Better quality enquiries.",
+              "tip": "Use real customer questions."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Platform",
+                  "options": ["Facebook", "Instagram", "Website"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Expert", "Witty"]
+                }
+              ],
+              "fields": ["[Question customers ask]", "[Short answer]", "[Trade type]"]
+            },
+            "prompts": [
+              "Write a simple post answering a common question customers ask.\n\nPlatform: [Platform]\nTone: [Tone]\n\nDetails:\nTrade: [Trade type]\nCustomer question: [Question customers ask]\nShort answer: [Short answer]\n\nWrite a short helpful post that:\n- explains the answer simply\n- builds trust\n- invites people to contact us if they need help"
+            ]
+          },
+          {
+            "subtitle": "Seasonal Promotion",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Drive urgency during peak seasons.",
+              "when": "At seasonal peaks (e.g. blocked drains winter, air con summer).",
+              "goodFor": "Generating immediate leads.",
+              "roi": "Quick influx of bookings.",
+              "tip": "Explain why this service matters right now."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Platform",
+                  "options": ["Facebook", "Instagram"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Direct", "Witty"]
+                }
+              ],
+              "fields": ["[Service]", "[Season reason]", "[Offer (optional)]", "[Suburb or service area]"]
+            },
+            "prompts": [
+              "Write a seasonal promotion post.\n\nPlatform: [Platform]\nTone: [Tone]\n\nDetails:\nService: [Service]\nSeason reason: [Season reason]\nOffer (optional): [Offer (optional)]\nService area: [Suburb or service area]\n\nWrite a short post that:\n- explains why the service is important right now\n- encourages people to book early\n- invites enquiries"
+            ]
+          },
+          {
+            "subtitle": "Turn a Review into a Post",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Leverage social proof.",
+              "when": "After getting a great Google review.",
+              "goodFor": "Trust and credibility.",
+              "roi": "More conversions.",
+              "tip": "Pair this with a photo of the completed job."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Platform",
+                  "options": ["Facebook", "Instagram"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Professional", "Witty"]
+                }
+              ],
+              "fields": ["[Paste review text]", "[Job type]", "[Suburb]"]
+            },
+            "prompts": [
+              "Write a social media post using this customer review.\n\nPlatform: [Platform]\nTone: [Tone]\n\nDetails:\nReview text: [Paste review text]\nJob type: [Job type]\nSuburb: [Suburb]\n\nWrite a short post that:\n- thanks the customer\n- highlights the work done\n- encourages people to get in touch for similar work"
+            ]
+          },
+          {
+            "subtitle": "“We’re Booking Up” Post",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Create urgency and secure future work.",
+              "when": "When schedule is filling.",
+              "goodFor": "Creating urgency.",
+              "roi": "More bookings.",
+              "tip": "Be specific about your availability."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Platform",
+                  "options": ["Facebook", "Instagram"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Direct", "Witty"]
+                }
+              ],
+              "fields": ["[Service]", "[How far ahead you're booked]", "[Area served]"]
+            },
+            "prompts": [
+              "Write a social media post.\n\nPlatform: [Platform]\nTone: [Tone]\n\nDetails:\nService: [Service]\nCurrent schedule: [How far ahead you're booked]\nService area: [Area served]\n\nWrite a post that:\n- mentions demand\n- encourages people to book early\n- invites enquiries"
+            ]
+          },
+          {
+            "subtitle": "“We’re in Your Area Today” Post",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Fill last-minute gaps in your schedule.",
+              "when": "When you have jobs in one suburb.",
+              "goodFor": "Quick local leads.",
+              "roi": "Last-minute jobs.",
+              "tip": "Post this early in the morning."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Platform",
+                  "options": ["Facebook", "Instagram"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Direct", "Witty"]
+                }
+              ],
+              "fields": ["[Suburb]", "[Trade]", "[Available slot time]"]
+            },
+            "prompts": [
+              "Write a short local availability post.\n\nPlatform: [Platform]\nTone: [Tone]\n\nDetails:\nTrade: [Trade]\nSuburb: [Suburb]\nAvailable time slot: [Available slot time]\n\nWrite a short post that:\n- says we’re already working in the area\n- mentions the available time\n- invites people to message quickly if they need help"
+            ]
+          },
+          {
+            "subtitle": "New Service Announcement",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Promote a new offering to your audience.",
+              "when": "When offering a new service.",
+              "goodFor": "Upselling existing audience.",
+              "roi": "Extra revenue streams.",
+              "tip": "Focus on the problem it solves, not just the feature."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Platform",
+                  "options": ["Facebook", "Instagram", "Email"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Professional", "Witty"]
+                }
+              ],
+              "fields": ["[Service name]", "[What problem it solves]", "[Service area]"]
+            },
+            "prompts": [
+              "Write a short announcement post for a new service.\n\nPlatform: [Platform]\nTone: [Tone]\n\nDetails:\nNew service: [Service name]\nProblem it solves: [What problem it solves]\nService area: [Service area]\n\nWrite a post that:\n- explains the service\n- says who it’s for\n- invites enquiries"
+            ]
+          }
+        ]
+      },
+      "Fix My Message": {
+        "title": "Fix My Message",
+        "cards": [{
+            "subtitle": "Fix AI Writing",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Make AI messages sound natural.",
+              "when": "When AI sounds robotic or over-written.",
+              "goodFor": "Quotes, follow-ups, job updates, payment reminders.",
+              "tip": "Paste the AI message and let it clean it up."
+            },
+            "ui": {
+              "quickInputs": [{
+                  "label": "Message type",
+                  "options": ["SMS", "Email"]
+                },
+                {
+                  "label": "Tone",
+                  "options": ["Friendly", "Direct", "Firm"]
+                }
+              ],
+              "fields": ["[PASTE MESSAGE]"]
+            },
+            "prompts": [
+              "Rewrite the message below so it sounds like a real Australian trade business.\n\nMessage type: [Message type]\nTone: [Tone]\n\nRules:\n- Plain English\n- Short sentences\n- No corporate or marketing language\n- No em dashes\n- Friendly, clear, and practical\n\nText to rewrite:\n[PASTE MESSAGE]"
+            ]
+          },
+          {
+            "subtitle": "Improve My Message",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Fix a message so it sounds exactly how you want.",
+              "when": "When the AI response is close but not quite right.",
+              "goodFor": "Improving tone, clarity, and professionalism.",
+              "tip": "Paste the AI message and your edited version."
+            },
+            "ui": {
+              "quickInputs": [{
+                "label": "Goal",
+                "options": ["Shorter", "Friendlier", "Firmer", "Clearer"]
+              }],
+              "fields": ["[AI version]", "[My version]"]
+            },
+            "prompts": [
+              "I'm improving my message style.\n\nHere is the AI version:\n[AI version]\n\nHere is my corrected version:\n[My version]\n\nTask:\n\n1. Identify the style differences (tone, sentence length, wording).\n2. List the key writing rules my business prefers.\n3. Rewrite the AI message again so it matches my style perfectly.\n\nGoal: [Goal], clear, and practical."
+            ]
+          }
+        ]
+      },
+      "Templates": {
+        "title": "Templates",
+        "cards": [
+          {
+            "subtitle": "Invoice Builder",
+            "chatbot": "ChatGPT",
+            "front": {
+              "outcome": "Create a structured invoice prompt using an easy form layout.",
+              "when": "When you need a professional, client-ready invoice draft fast.",
+              "goodFor": "Building accurate and structured documents for AI to format.",
+              "roi": "Saves admin time and guarantees consistent document styling.",
+              "tip": "Add items and fill out the fields. Totals calculate automatically."
+            },
+            "ui": {
+              "customForm": "invoiceBuilder"
+            },
+            "prompts": [
+              "Create an editable Invoice using the details below.\n\nBUSINESS DETAILS\nBusiness Name: [Business / Your Name]\nPhone: [Phone]\nABN: [ABN]\nEmail: [Email]\n\nCLIENT DETAILS\nClient Name: [Client Name]\nInvoice Number: [Invoice Number]\nClient Address: [Client Address]\nClient Phone: [Client Phone]\n\nJOB DETAILS\n[Line Items String]\n\nPRICING\nSubtotal (ex GST): $[Subtotal]\nDiscount: $[Discount]\nInclude GST: [Include GST]\nTotal: $[Total]\n\nPAYMENT\nPayment Due: [Payment Due]\nAccount Name: [Account Name]\nBSB: [BSB]\nAccount Number: [Account Number]\n\n[Extras String]\n[T&Cs Instructions]\n[Uploads String]\n\nRequirements:\n1. Write the output as a professional, client-ready Invoice.\n2. Use clear headings, include all pricing details, and an approval section.\n3. CRITICAL: You must use your python data analysis tool to generate this invoice as a downloadable Microsoft Word (.docx) document. Provide the download link in your response."
+            ]
+          }
+        ]
+      },
+      "Favourites": {
+        "title": "Favourites",
+        "cards": []
+      },
+      "Prompt Library": {
+        "title": "Prompt Library",
+        "cards": []
+      }
+    };
+    let current = "Winning Work";
+    const VOICE_TONE_GUIDE = "Use a straightforward, grounded Australian tone that feels warm, capable, and no fuss. Keep the language natural, clear, and friendly, with a bit of dry wit where it fits.";
+    const COMMUNICATION_CATEGORIES = new Set(["Winning Work", "Getting Paid", "Job Updates", "Reviews & Referrals", "Fix My Message"]);
+    const PREFS_KEY = "businessToolkitPrefsV1";
+    const FAVOURITES_KEY = "businessToolkitFavouritesV1";
+    const MENU_FOCUSABLE_SELECTOR = "button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])";
+    let promptRefreshers = [];
+    let lastMenuFocused = null;
+
+    const globalFirstNameInput = document.getElementById("globalFirstName");
+    const globalBizNameInput = document.getElementById("globalBizName");
+    const resetDefaultsBtn = document.getElementById("resetDefaultsBtn");
+
+    function readPrefs() {
+      try {
+        const raw = localStorage.getItem(PREFS_KEY);
+        return raw ? JSON.parse(raw) : {};
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function writePrefs(patch) {
+      const next = Object.assign({}, readPrefs(), patch);
+      try {
+        localStorage.setItem(PREFS_KEY, JSON.stringify(next));
+      } catch (e) {
+      }
+    }
+
+    function clearPrefs() {
+      try {
+        localStorage.removeItem(PREFS_KEY);
+      } catch (e) {
+      }
+    }
+
+    function getGlobalPromptPrefix() {
+      const fName = globalFirstNameInput.value.trim();
+      const bName = globalBizNameInput.value.trim();
+      let globalPrefix = "";
+      if (fName || bName) {
+        globalPrefix = "Context:\n";
+        globalPrefix += "I am an Australian trade business.\n";
+        if (fName) globalPrefix += "My Name: " + fName + "\n";
+        if (bName) globalPrefix += "My Business: " + bName + "\n";
+        globalPrefix += "\n";
+      }
+      return globalPrefix;
+    }
+
+    function refreshPromptText() {
+      promptRefreshers.forEach((refresh) => refresh());
+    }
+
+    function fallbackCopy(text, btn) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.top = "-9999px";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy");
+        if (btn) {
+          const oldText = btn.innerHTML;
+          btn.innerHTML = "Copied ✓";
+          btn.style.background = "#e75a00";
+          btn.style.color = "#f9faff";
+          setTimeout(() => {
+            btn.innerHTML = oldText;
+            btn.style.background = "";
+            btn.style.color = "";
+          }, 1200);
+        }
+      } catch (e) {
+        if (btn) btn.innerHTML = "Copy failed";
+      }
+      document.body.removeChild(ta);
+    }
+
+    function buildMenu() {
+      document.querySelectorAll(".menu-item").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.key === current);
+      });
+    }
+
+    function addVoiceToneInstruction(text, card) {
+      const quickLabels = (card.ui?.quickInputs || []).map((qi) => qi.label.toLowerCase());
+      const looksLikeCommsPrompt = quickLabels.includes("channel") || quickLabels.includes("message type") || /write a \[channel\]|sms|email|write a short \[channel\]|reply/i.test(text);
+      const shouldApply = COMMUNICATION_CATEGORIES.has(current) || looksLikeCommsPrompt;
+      if (!shouldApply || text.includes(VOICE_TONE_GUIDE)) return text;
+      return text + "\n\nVoice tone:\n" + VOICE_TONE_GUIDE;
+    }
+
+    // --- Custom Builder Logic --- //
+    function buildInvoiceBuilderDOM(container, card, selections, updatePromptsText) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'qb-wrapper';
+      wrapper.innerHTML = `
+        <h2 class="qb-header">Invoice Builder</h2>
+        
+        <div class="qb-section">
+            <div class="qb-title">YOUR BUSINESS DETAILS</div>
+            <div class="qb-grid-2">
+                <div class="qb-field"><label>Business / Your Name</label><input type="text" class="qb-input" id="qb-biz-name" placeholder="e.g. Smith Electrical"></div>
+                <div class="qb-field"><label>Phone</label><input type="text" class="qb-input" id="qb-biz-phone" placeholder="0400 000 000"></div>
+                <div class="qb-field"><label>ABN</label><input type="text" class="qb-input" id="qb-biz-abn" placeholder="00 000 000 000"></div>
+                <div class="qb-field"><label>Email</label><input type="email" class="qb-input" id="qb-biz-email" placeholder="you@example.com"></div>
+            </div>
+        </div>
+
+        <div class="qb-section">
+            <div class="qb-title">CLIENT DETAILS</div>
+            <div class="qb-grid-2">
+                <div class="qb-field"><label>Client Name</label><input type="text" class="qb-input" id="qb-client-name" placeholder="Client name"></div>
+                <div class="qb-field"><label>Invoice Number</label><input type="text" class="qb-input" id="qb-invoice-num" placeholder="INV-001"></div>
+                <div class="qb-field"><label>Client Address</label><input type="text" class="qb-input" id="qb-client-address" placeholder="123 Main St, Sydney NSW"></div>
+                <div class="qb-field"><label>Client Phone</label><input type="text" class="qb-input" id="qb-client-phone" placeholder="0400 000 000"></div>
+            </div>
+        </div>
+
+        <div class="qb-section">
+            <div class="qb-title">JOB DETAILS</div>
+            <div id="qb-lines-container"></div>
+            <button type="button" id="qb-add-line-btn" class="qb-add-btn">+ Add Line Item</button>
+        </div>
+
+        <div class="qb-section">
+            <div class="qb-title">PRICING</div>
+            <div class="qb-grid-2">
+                <div class="qb-field"><label>Subtotal (ex GST)</label><input type="text" class="qb-input" id="qb-subtotal" value="0.00" readonly style="background:#f1f5f9; font-weight:700;"></div>
+                <div class="qb-field"><label>Discount ($)</label><input type="number" step="0.01" min="0" class="qb-input" id="qb-discount" placeholder="0.00"></div>
+            </div>
+            <div class="qb-toggle-row">
+                <div class="qb-toggle-label">Include GST (10%)</div>
+                <label class="qb-toggle"><input type="checkbox" id="qb-gst-toggle" checked><span class="qb-slider"></span></label>
+            </div>
+            <div class="qb-total-box">
+                <span>Total (inc GST)</span>
+                <span class="qb-total-val" id="qb-total-display">$0.00</span>
+            </div>
+        </div>
+
+        <div class="qb-section">
+            <div class="qb-title">PAYMENT</div>
+            <div class="qb-grid-2">
+                <div class="qb-field"><label>Payment Due</label><input type="date" class="qb-input" id="qb-pay-due"></div>
+            </div>
+            <div class="qb-grid-3">
+                <div class="qb-field"><label>Account Name</label><input type="text" class="qb-input" id="qb-acc-name" placeholder="Account name"></div>
+                <div class="qb-field"><label>BSB</label><input type="text" class="qb-input" id="qb-bsb" placeholder="000-000"></div>
+                <div class="qb-field"><label>Account Number</label><input type="text" class="qb-input" id="qb-acc-num" placeholder="00000000"></div>
+            </div>
+        </div>
+
+        <div class="qb-section">
+            <div class="qb-title">TERMS & CONDITIONS</div>
+            <div class="qb-toggle-row">
+                <div class="qb-toggle-label">Use AI generated T&amp;C's</div>
+                <label class="qb-toggle"><input type="checkbox" id="qb-ai-terms-toggle" checked><span class="qb-slider"></span></label>
+            </div>
+            <div class="qb-field" id="qb-terms-field" style="display:none;">
+                <label>Enter your T&amp;C's</label>
+                <textarea class="qb-input" id="qb-terms-text" placeholder="Type your payment terms, warranty and conditions..."></textarea>
+            </div>
+        </div>
+
+        <div class="qb-section">
+            <div class="qb-title">UPLOADS</div>
+            <div class="qb-toggle-row">
+                <div class="qb-toggle-label">Upload a logo</div>
+                <label class="qb-toggle"><input type="checkbox" id="qb-logo-toggle" checked><span class="qb-slider"></span></label>
+            </div>
+            <button type="button" class="qb-upload-btn" id="qb-logo-btn">
+              <svg class="qb-upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg> 
+              <span id="qb-logo-btn-text">Upload logo</span>
+            </button>
+            <input type="file" id="qb-logo-file" style="display:none;" accept="image/*">
+
+            <div class="qb-toggle-row">
+                <div class="qb-toggle-label">Upload a past invoice example</div>
+                <label class="qb-toggle"><input type="checkbox" id="qb-example-toggle" checked><span class="qb-slider"></span></label>
+            </div>
+            <button type="button" class="qb-upload-btn" id="qb-example-btn">
+              <svg class="qb-upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg> 
+              <span id="qb-example-btn-text">Upload invoice example</span>
+            </button>
+            <input type="file" id="qb-example-file" style="display:none;" accept=".pdf,.png,.jpg,.jpeg">
+        </div>
+
+        <div class="qb-section">
+            <div class="qb-title">EXTRAS</div>
+            <div class="qb-toggle-row">
+                <div class="qb-toggle-label">Include "Pay now via credit card" button</div>
+                <label class="qb-toggle"><input type="checkbox" id="qb-cc-toggle"><span class="qb-slider"></span></label>
+            </div>
+            <div class="qb-toggle-row">
+                <div class="qb-toggle-label">Include "Leave a Google review" button</div>
+                <label class="qb-toggle"><input type="checkbox" id="qb-review-toggle"><span class="qb-slider"></span></label>
+            </div>
+        </div>
+      `;
+      container.appendChild(wrapper);
+
+      // DOM Node References
+      const $ = id => wrapper.querySelector('#' + id);
+      const bizName = $('qb-biz-name');
+      const bizPhone = $('qb-biz-phone');
+      const bizAbn = $('qb-biz-abn');
+      const bizEmail = $('qb-biz-email');
+      const clientName = $('qb-client-name');
+      const invoiceNum = $('qb-invoice-num');
+      const clientAddress = $('qb-client-address');
+      const clientPhone = $('qb-client-phone');
+      
+      const linesContainer = $('qb-lines-container');
+      const addLineBtn = $('qb-add-line-btn');
+
+      const subtotal = $('qb-subtotal');
+      const discount = $('qb-discount');
+      const gstToggle = $('qb-gst-toggle');
+      const totalDisplay = $('qb-total-display');
+      
+      const payDue = $('qb-pay-due');
+      const accName = $('qb-acc-name');
+      const bsb = $('qb-bsb');
+      const accNum = $('qb-acc-num');
+
+      const logoToggle = $('qb-logo-toggle');
+      const logoBtn = $('qb-logo-btn');
+      const logoFile = $('qb-logo-file');
+      const logoBtnText = $('qb-logo-btn-text');
+      
+      const exToggle = $('qb-example-toggle');
+      const exBtn = $('qb-example-btn');
+      const exFile = $('qb-example-file');
+      const exBtnText = $('qb-example-btn-text');
+      
+      const ccToggle = $('qb-cc-toggle');
+      const reviewToggle = $('qb-review-toggle');
+      const aiTermsToggle = $('qb-ai-terms-toggle');
+      const termsField = $('qb-terms-field');
+      const termsText = $('qb-terms-text');
+
+      // Setup initial defaults
+      if (globalBizNameInput.value) bizName.value = globalBizNameInput.value;
+      
+      const recalculate = () => {
+        let sub = 0;
+        linesContainer.querySelectorAll('.qb-line-item').forEach(line => {
+          const q = parseFloat(line.querySelector('.qb-qty-input').value) || 0;
+          const c = parseFloat(line.querySelector('.qb-cost-input').value) || 0;
+          sub += (q * c);
+        });
+        
+        subtotal.value = sub.toFixed(2);
+        
+        const disc = parseFloat(discount.value) || 0;
+        const base = Math.max(0, sub - disc);
+        const gstAmount = gstToggle.checked ? base * 0.10 : 0;
+        const total = base + gstAmount;
+        totalDisplay.textContent = `$${total.toFixed(2)}`;
+        
+        // Update main selections
+        selections["[Subtotal]"] = sub.toFixed(2);
+        selections["[Discount]"] = disc.toFixed(2);
+        selections["[Include GST]"] = gstToggle.checked ? "Yes (10%)" : "No";
+        selections["[Total]"] = total.toFixed(2);
+      };
+
+      const syncToSelections = () => {
+        selections["[Business / Your Name]"] = bizName.value || "[Business / Your Name]";
+        selections["[Phone]"] = bizPhone.value || "[Phone]";
+        selections["[ABN]"] = bizAbn.value || "[ABN]";
+        selections["[Email]"] = bizEmail.value || "[Email]";
+        selections["[Client Name]"] = clientName.value || "[Client Name]";
+        selections["[Invoice Number]"] = invoiceNum.value || "[Invoice Number]";
+        selections["[Client Address]"] = clientAddress.value || "[Client Address]";
+        selections["[Client Phone]"] = clientPhone.value || "[Client Phone]";
+        selections["[Payment Due]"] = payDue.value || "[Payment Due]";
+        selections["[Account Name]"] = accName.value || "[Account Name]";
+        selections["[BSB]"] = bsb.value || "[BSB]";
+        selections["[Account Number]"] = accNum.value || "[Account Number]";
+
+        // Line Items builder
+        let itemsStr = "";
+        linesContainer.querySelectorAll('.qb-line-item').forEach((line, i) => {
+          const desc = line.querySelector('.qb-desc-input').value || 'Item description';
+          const q = line.querySelector('.qb-qty-input').value || '1';
+          const c = parseFloat(line.querySelector('.qb-cost-input').value || 0).toFixed(2);
+          const t = line.querySelector('.qb-line-total').value || '0.00';
+          itemsStr += `Item ${i+1}:\nDescription: ${desc}\nQuantity: ${q} | Unit Cost: $${c} | Total: $${t}\n\n`;
+        });
+        selections["[Line Items String]"] = itemsStr.trim();
+
+        // Extras builder
+        let extras = [];
+        if (ccToggle.checked) extras.push("- Include a 'Pay now via credit card' button");
+        if (reviewToggle.checked) extras.push("- Include a 'Leave a Google review' button");
+        selections["[Extras String]"] = extras.length ? ("Required Extras:\n" + extras.join("\n")) : "";
+
+        selections["[T&Cs Instructions]"] = aiTermsToggle.checked
+          ? "Generate clear standard T&Cs suitable for this invoice."
+          : (termsText.value.trim() ? ("Use these exact T&Cs:\n" + termsText.value.trim()) : "Use these exact T&Cs: [Enter your T&Cs]");
+
+        // Uploads builder
+        let uploads = [];
+        if (logoToggle.checked) {
+           let fileName = logoFile.files[0] ? logoFile.files[0].name : "logo attached";
+           uploads.push("- Make sure to include the business logo: " + fileName);
+        }
+        if (exToggle.checked) {
+           let fileName = exFile.files[0] ? exFile.files[0].name : "example document attached";
+           uploads.push("- Reference the style of the past invoice: " + fileName);
+        }
+        selections["[Uploads String]"] = uploads.length ? ("Formatting instructions:\n" + uploads.join("\n")) : "";
+
+        recalculate();
+        updatePromptsText();
+      };
+
+      // Create a single line item
+      function createLineItem() {
+        const line = document.createElement('div');
+        line.className = 'qb-line-item';
+        line.innerHTML = `
+          <button type="button" class="qb-remove-line">Remove</button>
+          <div class="qb-field" style="margin-bottom:12px;">
+            <label>Job Description</label>
+            <textarea class="qb-input qb-desc-input" placeholder="Describe the work..."></textarea>
+          </div>
+          <div class="qb-grid-3">
+            <div class="qb-field"><label>Qty</label><input type="number" step="0.01" min="0" class="qb-input qb-qty-input" value="1"></div>
+            <div class="qb-field"><label>Unit Cost ($)</label><input type="number" step="0.01" min="0" class="qb-input qb-cost-input" value="0.00"></div>
+            <div class="qb-field"><label>Line Total ($)</label><input type="text" class="qb-input qb-line-total" value="0.00" readonly style="background:#f1f5f9; font-weight:bold;"></div>
+          </div>
+        `;
+        
+        const qtyInput = line.querySelector('.qb-qty-input');
+        const costInput = line.querySelector('.qb-cost-input');
+        const totalInput = line.querySelector('.qb-line-total');
+        const descInput = line.querySelector('.qb-desc-input');
+        const removeBtn = line.querySelector('.qb-remove-line');
+
+        const updateLine = () => {
+          const q = parseFloat(qtyInput.value) || 0;
+          const c = parseFloat(costInput.value) || 0;
+          totalInput.value = (q * c).toFixed(2);
+          syncToSelections();
+        };
+
+        qtyInput.addEventListener('input', updateLine);
+        costInput.addEventListener('input', updateLine);
+        descInput.addEventListener('input', syncToSelections);
+
+        removeBtn.addEventListener('click', () => {
+          if (linesContainer.children.length > 1) {
+            line.remove();
+            syncToSelections();
+          }
+        });
+
+        linesContainer.appendChild(line);
+        updateLine();
+      }
+
+      // Initialize line items
+      createLineItem();
+      addLineBtn.addEventListener('click', createLineItem);
+
+      // Events - Main Text/Number Inputs
+      [bizName, bizPhone, bizAbn, bizEmail, clientName, invoiceNum, clientAddress, clientPhone, discount, payDue, accName, bsb, accNum].forEach(input => {
+        input.addEventListener('input', syncToSelections);
+      });
+
+      // Events - Toggles
+      gstToggle.addEventListener('change', syncToSelections);
+      ccToggle.addEventListener('change', syncToSelections);
+      reviewToggle.addEventListener('change', syncToSelections);
+      aiTermsToggle.addEventListener('change', (e) => {
+        termsField.style.display = e.target.checked ? 'none' : 'block';
+        syncToSelections();
+      });
+      termsText.addEventListener('input', syncToSelections);
+
+      logoToggle.addEventListener('change', (e) => {
+        logoBtn.style.display = e.target.checked ? 'flex' : 'none';
+        syncToSelections();
+      });
+
+      exToggle.addEventListener('change', (e) => {
+        exBtn.style.display = e.target.checked ? 'flex' : 'none';
+        syncToSelections();
+      });
+
+      // Events - File Upload Mocking
+      logoBtn.addEventListener('click', () => logoFile.click());
+      logoFile.addEventListener('change', () => {
+        if (logoFile.files[0]) {
+          logoBtnText.textContent = logoFile.files[0].name;
+          logoBtn.style.background = '#f1f5f9';
+        }
+        syncToSelections();
+      });
+
+      exBtn.addEventListener('click', () => exFile.click());
+      exFile.addEventListener('change', () => {
+        if (exFile.files[0]) {
+          exBtnText.textContent = exFile.files[0].name;
+          exBtn.style.background = '#f1f5f9';
+        }
+        syncToSelections();
+      });
+
+      // Fire initial sync
+      syncToSelections();
+    }
+
+
+    function getCardId(category, subtitle) {
+      return category + "::" + subtitle;
+    }
+
+    function readFavourites() {
+      try {
+        const raw = localStorage.getItem(FAVOURITES_KEY);
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function writeFavourites(favs) {
+      localStorage.setItem(FAVOURITES_KEY, JSON.stringify(favs));
+    }
+
+    function toggleFavourite(category, card) {
+      const id = getCardId(category, card.subtitle);
+      const favs = readFavourites();
+      const exists = favs.includes(id);
+      const next = exists ? favs.filter((item) => item !== id) : favs.concat(id);
+      writeFavourites(next);
+      render();
+    }
+
+    function buildPromptLibraryData() {
+      return Object.keys(APP)
+        .filter((category) => !["Favourites", "Prompt Library"].includes(category))
+        .map((category) => ({
+          category,
+          cards: (APP[category].cards || []).map((card) => ({ subtitle: card.subtitle }))
+        }));
+    }
+
+    function render() {
+      document.getElementById("pageTitle").textContent = APP[current].title;
+      const helpEl = document.getElementById("pageHelp");
+      const copy = {
+        "Winning Work": {
+          why: "Winning work is mainly speed and clarity. Fast follow up, clear options, and confident replies stop leads going cold and protect margin.",
+          how: "Open a card, pick the quick inputs, fill the brackets, then copy the prompt into your AI chatbot. Save the best outputs as templates in your system."
+        },
+        "Job Updates": {
+          why: "Clear updates keep customers happy, reduce phone calls, and stop small issues turning into big complaints.",
+          how: "Pick the situation, type your details, copy the prompt, paste it into ChatGPT, and send the message."
+        },
+        "Getting Paid": {
+          why: "Cashflow keeps the doors open. Clear payment messages reduce excuses, speed up payments, and stop awkward back-and-forth.",
+          how: "Pick the situation, type the details, copy the prompt, paste into ChatGPT, send the message."
+        },
+        "Reviews & Referrals": {
+          why: "Reviews win jobs. Referrals are the easiest leads you’ll ever get. This page helps you ask without sounding awkward.",
+          how: "Pick the situation, type your details, copy the prompt, paste into ChatGPT, send."
+        },
+        "Get More Enquiries": {
+          why: "Most tradies rely on word of mouth. A few simple posts and messages can bring in steady enquiries without spending money on ads.",
+          how: "Pick the situation, type your details, copy the prompt, paste into ChatGPT, and post."
+        },
+        "Fix My Message": {
+          why: "If AI sounds weird, fix it fast so your message stays clear and professional.",
+          how: "Paste your draft (or AI output), copy the prompt, paste into ChatGPT, and use the improved version."
+        },
+        "Templates": {
+          why: "Custom templates ensure your AI outputs match your business exactly every time.",
+          how: "Add items and fill out the structured form below and we will build the perfect context prompt."
+        },
+        "Favourites": {
+          why: "Keep your most-used prompts in one place for faster daily workflows.",
+          how: "Save a prompt card with the star button, then access it any time here."
+        },
+        "Prompt Library": {
+          why: "Browse every prompt title in one simple index grouped by category.",
+          how: "Click any title to jump straight to that prompt card."
+        }
+      };
+      const c = copy[current] || {
+        why: "Use this page to get practical outputs fast.",
+        how: "Open a card, copy the prompt, and fill in the brackets."
+      };
+      helpEl.innerHTML = "<div class=\"help-block\"><div class=\"help-head\">Why this matters</div><div class=\"help-text\">" + c.why + "</div><div class=\"help-head\">How to use this page</div><div class=\"help-text\">" + c.how + "</div></div>";
+      const grid = document.getElementById("cardGrid");
+      grid.innerHTML = "";
+      const cardRefreshers = [];
+
+      if (current === "Prompt Library") {
+        buildPromptLibraryData().forEach((entry) => {
+          const section = document.createElement("div");
+          section.className = "card open";
+          section.innerHTML = `<div class="card-head"><h3>${entry.category}</h3></div>`;
+          const body = document.createElement("div");
+          body.className = "card-body";
+          body.hidden = false;
+          entry.cards.forEach((card) => {
+            const linkBtn = document.createElement("button");
+            linkBtn.type = "button";
+            linkBtn.className = "copy-btn";
+            linkBtn.style.marginBottom = "8px";
+            linkBtn.textContent = card.subtitle;
+            linkBtn.addEventListener("click", () => {
+              current = entry.category;
+              writePrefs({ lastCategory: entry.category, openCard: card.subtitle });
+              render();
+            });
+            body.appendChild(linkBtn);
+          });
+          section.appendChild(body);
+          grid.appendChild(section);
+        });
+        promptRefreshers = [];
+        buildMenu();
+        return;
+      }
+
+      let cardsToRender = APP[current].cards || [];
+      if (current === "Favourites") {
+        const favs = new Set(readFavourites());
+        cardsToRender = [];
+        Object.keys(APP).forEach((category) => {
+          if (["Favourites", "Prompt Library"].includes(category)) return;
+          (APP[category].cards || []).forEach((card) => {
+            if (favs.has(getCardId(category, card.subtitle))) {
+              cardsToRender.push(Object.assign({}, card, { __category: category }));
+            }
+          });
+        });
+      }
+
+      if (current === "Favourites" && cardsToRender.length === 0) {
+        const empty = document.createElement("div");
+        empty.className = "card open";
+        empty.innerHTML = `<div class="card-head"><h3>No favourites yet</h3></div><div class="card-body" style="display:block;">Tap ☆ Save favourite on any card to add it here.</div>`;
+        grid.appendChild(empty);
+      }
+
+      cardsToRender.forEach((card, cIndex) => {
+        const wrap = document.createElement("div");
+        wrap.className = "card";
+        const head = document.createElement("div");
+        head.className = "card-head";
+        head.setAttribute("role", "button");
+        head.tabIndex = 0;
+        head.setAttribute("aria-expanded", "false");
+        const h = document.createElement("h3");
+        h.textContent = card.subtitle;
+        head.appendChild(h);
+        const sourceCategory = card.__category || current;
+        const favouriteBtn = document.createElement("button");
+        favouriteBtn.type = "button";
+        favouriteBtn.className = "favourite-btn";
+        favouriteBtn.style.marginBottom = "8px";
+        const isFavourite = readFavourites().includes(getCardId(sourceCategory, card.subtitle));
+        favouriteBtn.textContent = isFavourite ? "★ Saved" : "☆ Save favourite";
+        favouriteBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          toggleFavourite(sourceCategory, card);
+        });
+        head.appendChild(favouriteBtn);
+        const selections = {};
+        const kv = document.createElement("div");
+        kv.className = "kv";
+        const titleLabel = h;
+        const frontRows = {};
+        const addRow = (label, value) => {
+          if (!value) return;
+          const row = document.createElement("div");
+          row.className = "row";
+          const l = document.createElement("div");
+          l.className = "label";
+          l.textContent = label;
+          const v = document.createElement("div");
+          v.className = "value";
+          v.textContent = value;
+          row.appendChild(l);
+          row.appendChild(v);
+          kv.appendChild(row);
+          frontRows[label] = v;
+        };
+        addRow("Outcome:", card.front?.outcome);
+        addRow("When to use this:", card.front?.when);
+        addRow("Good for:", card.front?.goodFor);
+        addRow("ROI:", card.front?.roi);
+        addRow("Tip:", card.front?.tip);
+        const updateFrontSummary = () => {
+          if (!card.frontDynamic) return;
+          const selectedType = selections["Document type"];
+          const activeFront = card.frontDynamic[selectedType] || card.frontDynamic.Quote || card.front;
+          if (!activeFront) return;
+          if (activeFront.title) titleLabel.textContent = activeFront.title;
+          if (frontRows["Outcome:"]) frontRows["Outcome:"].textContent = activeFront.outcome || "";
+          if (frontRows["When to use this:"]) frontRows["When to use this:"].textContent = activeFront.when || "";
+          if (frontRows["Good for:"]) frontRows["Good for:"].textContent = activeFront.goodFor || "";
+          if (frontRows["ROI:"]) frontRows["ROI:"].textContent = activeFront.roi || "";
+          if (frontRows["Tip:"]) frontRows["Tip:"].textContent = activeFront.tip || "";
+        };
+        updateFrontSummary();
+        head.appendChild(kv);
+        const revealBtn = document.createElement("button");
+        revealBtn.type = "button";
+        revealBtn.className = "reveal-btn prompt-toggle";
+        revealBtn.textContent = "Reveal prompt";
+        head.appendChild(revealBtn);
+        const body = document.createElement("div");
+        body.className = "card-body";
+        const bodyId = "card-body-" + sourceCategory.toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-" + cIndex;
+        body.id = bodyId;
+        body.hidden = true;
+        head.setAttribute("aria-controls", bodyId);
+        
+        // --- Dynamic Prompt Logic ---
+        const originalPrompts = (card.prompts || []).map(p => p);
+        const updatePromptsText = () => {
+          const promptBlocks = body.querySelectorAll('.prompt-text');
+          const globalPrefix = getGlobalPromptPrefix();
+          originalPrompts.forEach((origText, idx) => {
+            let newText = origText;
+            
+            // Loop over generic UI fields if any
+            if (card.ui && card.ui.quickInputs) {
+              card.ui.quickInputs.forEach(qi => {
+                const val = selections[qi.label];
+                if (val) {
+                  const regex = new RegExp(`\\[${qi.label}\\]`, 'gi');
+                  newText = newText.replace(regex, val);
+                }
+              });
+            }
+            if (card.ui && card.ui.fields) {
+              card.ui.fields.forEach(f => {
+                const val = selections[f];
+                if (val) {
+                  newText = newText.split(f).join(val);
+                }
+              });
+            }
+            
+            // For customForm (Invoice Builder), strictly replace the keys found in selections
+            if (card.ui && card.ui.customForm === "invoiceBuilder") {
+               Object.keys(selections).forEach(key => {
+                   if(selections[key]) {
+                       newText = newText.split(key).join(selections[key]);
+                   }
+               });
+            }
+
+            newText = addVoiceToneInstruction(newText, card);
+            if (promptBlocks[idx]) promptBlocks[idx].textContent = globalPrefix + newText;
+          });
+        };
+
+        // --- UX Form Logic ---
+        if (card.ui) {
+          if (card.ui.customForm === "invoiceBuilder") {
+              const uiContainer = document.createElement("div");
+              uiContainer.className = "ui-block";
+              buildInvoiceBuilderDOM(uiContainer, card, selections, updatePromptsText);
+              body.appendChild(uiContainer);
+          } else {
+              const ui = document.createElement("div");
+              ui.className = "ui-block";
+              if (card.ui.quickInputs && card.ui.quickInputs.length) {
+                card.ui.quickInputs.forEach((qi, qIndex) => {
+                  const qRow = document.createElement("div");
+                  qRow.className = "ui-row";
+                  const qt = document.createElement("div");
+                  qt.className = "ui-title";
+                  qt.textContent = qi.label;
+                  qRow.appendChild(qt);
+                  const flexContainer = document.createElement("div");
+                  flexContainer.className = "chips";
+                  const groupName = `qi_${cIndex}_${qIndex}`;
+                  let customInputRef;
+                  const handleSelect = (val) => {
+                    selections[qi.label] = val;
+                    updateFrontSummary();
+                    updatePromptsText();
+                  };
+                  qi.options.forEach(opt => {
+                    const labelEl = document.createElement("label");
+                    labelEl.className = "chip-label";
+                    const radio = document.createElement("input");
+                    radio.type = "radio";
+                    radio.name = groupName;
+                    radio.value = opt;
+                    radio.addEventListener("change", () => {
+                      if (customInputRef) customInputRef.classList.remove("active");
+                      handleSelect(opt);
+                    });
+                    const span = document.createElement("span");
+                    span.textContent = opt;
+                    labelEl.appendChild(radio);
+                    labelEl.appendChild(span);
+                    flexContainer.appendChild(labelEl);
+                  });
+                  const labelOther = document.createElement("label");
+                  labelOther.className = "chip-label";
+                  const radioOther = document.createElement("input");
+                  radioOther.type = "radio";
+                  radioOther.name = groupName;
+                  radioOther.value = "Other";
+                  const spanOther = document.createElement("span");
+                  spanOther.textContent = "Other";
+                  const textInput = document.createElement("input");
+                  textInput.type = "text";
+                  textInput.className = "custom-input";
+                  textInput.placeholder = "Type custom option...";
+                  customInputRef = textInput;
+                  radioOther.addEventListener("change", () => {
+                    textInput.classList.add("active");
+                    textInput.focus();
+                    handleSelect(textInput.value || `[${qi.label}]`);
+                  });
+                  textInput.addEventListener("input", (e) => {
+                    if (radioOther.checked) {
+                      handleSelect(e.target.value || `[${qi.label}]`);
+                    }
+                  });
+                  labelOther.appendChild(radioOther);
+                  labelOther.appendChild(spanOther);
+                  flexContainer.appendChild(labelOther);
+                  flexContainer.appendChild(textInput);
+                  qRow.appendChild(flexContainer);
+                  ui.appendChild(qRow);
+                });
+              }
+              if (card.ui.fields && card.ui.fields.length) {
+                const f = document.createElement("div");
+                f.className = "ui-row";
+                const ft = document.createElement("div");
+                ft.className = "ui-title";
+                ft.textContent = "Type your...";
+                f.appendChild(ft);
+                const fl = document.createElement("div");
+                fl.className = "fields";
+                card.ui.fields.forEach(t => {
+                  const searchStr = t.toLowerCase();
+                  const isMultiLine = searchStr.includes("paste") || searchStr.includes("version") || searchStr.includes("message") || searchStr.includes("summary") || searchStr.includes("e.g.") || searchStr.includes("facts");
+                  const input = document.createElement(isMultiLine ? "textarea" : "input");
+                  if (!isMultiLine) input.type = "text";
+                  if (isMultiLine) input.rows = 2;
+                  input.className = "type-input";
+                  input.placeholder = t.replace(/\[|\]/g, '');
+                  input.addEventListener("input", (e) => {
+                    selections[t] = e.target.value || t;
+                    updatePromptsText();
+                  });
+                  fl.appendChild(input);
+                });
+                f.appendChild(fl);
+                ui.appendChild(f);
+              }
+              body.appendChild(ui);
+          }
+        }
+        (card.prompts || []).forEach((p, i) => {
+          const block = document.createElement("div");
+          block.className = "prompt-block";
+          const label = document.createElement("div");
+          label.className = "prompt-label";
+          label.textContent = (card.prompts.length > 1) ? ("Prompt " + (i + 1)) : "Prompt";
+          const pre = document.createElement("div");
+          pre.className = "prompt-text";
+          let initialText = p;
+          initialText = addVoiceToneInstruction(initialText, card);
+          const globalPrefix = getGlobalPromptPrefix();
+          pre.textContent = globalPrefix + initialText;
+          const bottomBtnRow = document.createElement("div");
+          bottomBtnRow.className = "copy-row";
+          const bottomBtn = document.createElement("button");
+          bottomBtn.type = "button";
+          bottomBtn.className = "copy-btn";
+          bottomBtn.innerHTML = "Copy prompt";
+          const badge = document.createElement("div");
+          badge.className = "chatbot-badge";
+          const botName = card.chatbot || "ChatGPT";
+          badge.innerHTML = "<a href='https://chatgpt.com/' target='_blank' rel='noopener noreferrer'>Paste into: <strong>" + botName + " &rarr;</strong></a>";
+          bottomBtnRow.appendChild(bottomBtn);
+          bottomBtnRow.appendChild(badge);
+          const doCopy = (btn) => {
+            const textToCopy = pre.textContent;
+            if (navigator.clipboard && window.isSecureContext) {
+              navigator.clipboard.writeText(textToCopy).then(() => {
+                const oldText = btn.innerHTML;
+                btn.innerHTML = "Copied ✓";
+                btn.style.background = "#e75a00";
+                btn.style.color = "#f9faff";
+                setTimeout(() => {
+                  btn.innerHTML = oldText;
+                  btn.style.background = "";
+                  btn.style.color = "";
+                }, 1200);
+              }).catch(() => fallbackCopy(textToCopy, btn));
+            } else {
+              fallbackCopy(textToCopy, btn);
+            }
+          };
+          bottomBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            doCopy(bottomBtn);
+          });
+          block.appendChild(label);
+          block.appendChild(pre);
+          block.appendChild(bottomBtnRow);
+          body.appendChild(block);
+        });
+        
+        cardRefreshers.push(updatePromptsText);
+        
+        const toggleCard = () => {
+          const isOpen = wrap.classList.contains("open");
+          document.querySelectorAll(".card.open").forEach((el) => {
+            el.classList.remove("open");
+            const openHead = el.querySelector(".card-head");
+            const openBody = el.querySelector(".card-body");
+            if (openHead) openHead.setAttribute("aria-expanded", "false");
+            if (openBody) openBody.hidden = true;
+          });
+          if (!isOpen) {
+            wrap.classList.add("open");
+            head.setAttribute("aria-expanded", "true");
+            body.hidden = false;
+            setTimeout(() => {
+              const rect = wrap.getBoundingClientRect();
+              const y = window.scrollY + rect.top - 16;
+              window.scrollTo({
+                top: y,
+                behavior: "smooth"
+              });
+              
+              // Ensure dynamic prompt updates on first open for invoice builder if empty
+              if(card.ui && card.ui.customForm === "invoiceBuilder") {
+                 updatePromptsText();
+              }
+            }, 30);
+          }
+        };
+        head.addEventListener("click", (e) => {
+          if (e.target.closest(".reveal-btn")) return;
+          toggleCard();
+        });
+        head.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggleCard();
+          }
+        });
+        revealBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          toggleCard();
+        });
+        wrap.appendChild(head);
+        wrap.appendChild(body);
+        grid.appendChild(wrap);
+      });
+      promptRefreshers = cardRefreshers;
+      const openCard = readPrefs().openCard;
+      if (openCard) {
+        document.querySelectorAll(".card").forEach((el) => {
+          const title = el.querySelector("h3");
+          if (title && title.textContent === openCard) {
+            const btn = el.querySelector(".prompt-toggle");
+            if (btn) btn.click();
+          }
+        });
+        writePrefs({ openCard: null });
+      }
+      buildMenu();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+    function navigate(key) {
+      current = key;
+      writePrefs({
+        lastCategory: key
+      });
+      closeMenu();
+      render();
+    }
+    const menuBtn = document.getElementById("menuBtn");
+    const menuPanel = document.getElementById("menuPanel");
+    const menuBackdrop = document.getElementById("menuBackdrop");
+
+    function openMenu() {
+      lastMenuFocused = document.activeElement;
+      menuPanel.classList.add("open");
+      menuBackdrop.classList.add("open");
+      menuPanel.setAttribute("aria-hidden", "false");
+      menuBtn.setAttribute("aria-expanded", "true");
+      menuBtn.setAttribute("aria-label", "Close menu");
+      const firstMenuItem = menuPanel.querySelector(".menu-item");
+      if (firstMenuItem) firstMenuItem.focus();
+    }
+
+    function closeMenu() {
+      menuPanel.classList.remove("open");
+      menuBackdrop.classList.remove("open");
+      menuPanel.setAttribute("aria-hidden", "true");
+      menuBtn.setAttribute("aria-expanded", "false");
+      menuBtn.setAttribute("aria-label", "Open menu");
+      if (lastMenuFocused && typeof lastMenuFocused.focus === "function") {
+        lastMenuFocused.focus();
+      }
+    }
+    menuBtn.addEventListener("click", () => {
+      if (menuPanel.classList.contains("open")) closeMenu();
+      else openMenu();
+    });
+    menuBackdrop.addEventListener("click", closeMenu);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && menuPanel.classList.contains("open")) {
+        closeMenu();
+        return;
+      }
+      if (e.key === "Tab" && menuPanel.classList.contains("open")) {
+        const focusable = Array.from(menuPanel.querySelectorAll(MENU_FOCUSABLE_SELECTOR));
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+    document.querySelectorAll(".menu-item").forEach((btn) => {
+      if (btn.dataset.key) btn.addEventListener("click", () => navigate(btn.dataset.key));
+    });
+
+    document.getElementById("logoutBtn").addEventListener("click", async () => {
+      if (window.__supabase) await window.__supabase.auth.signOut();
+      window.location.replace("./login.html");
+    });
+
+    document.getElementById("footerLogoutBtn").addEventListener("click", async () => {
+      if (window.__supabase) await window.__supabase.auth.signOut();
+      window.location.replace("./login.html");
+    });
+
+    function handleGlobalDefaultsChange() {
+      writePrefs({
+        firstName: globalFirstNameInput.value,
+        businessName: globalBizNameInput.value
+      });
+      refreshPromptText();
+    }
+
+    globalFirstNameInput.addEventListener("input", handleGlobalDefaultsChange);
+    globalBizNameInput.addEventListener("input", handleGlobalDefaultsChange);
+    resetDefaultsBtn.addEventListener("click", () => {
+      clearPrefs();
+      globalFirstNameInput.value = "";
+      globalBizNameInput.value = "";
+      refreshPromptText();
+      
+      // Clear out the Quote builder if it's currently rendered
+      const bizNameField = document.getElementById('qb-biz-name');
+      if (bizNameField) {
+         bizNameField.value = "";
+         bizNameField.dispatchEvent(new Event('input'));
+      }
+    });
+
+    const savedPrefs = readPrefs();
+    if (savedPrefs.firstName) globalFirstNameInput.value = savedPrefs.firstName;
+    if (savedPrefs.businessName) globalBizNameInput.value = savedPrefs.businessName;
+    if (savedPrefs.lastCategory && APP[savedPrefs.lastCategory]) {
+      current = savedPrefs.lastCategory;
+    }
+    render();
+  </script>
+</body>
+
+</html>
